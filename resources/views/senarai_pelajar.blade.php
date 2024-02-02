@@ -1,6 +1,8 @@
 <title>
     Sistem - Senarai Pelajar
   </title>
+
+  
 @include('layout.header')
 <div class="container-fluid py-4">
       <div class="row">
@@ -14,6 +16,14 @@
             <div class="card-body px-0 pb-2">
               <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0">
+                    
+                <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                    <div class="input-group input-group-outline mx-3">
+                    <label class="form-label">Taip nama pelajar di sini....</label>
+                    <input type="text" size="10" class="form-control">
+                    </div>
+                </div>
+
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Pelajar</th>
