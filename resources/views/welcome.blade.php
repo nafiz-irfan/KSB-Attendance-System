@@ -90,4 +90,3 @@
       
       @include('layout.layout')
 
-</html>

@@ -7,7 +7,7 @@
     <div class="row">
       @for($i = 1; $i < 10; $i++)
       <div class="col-xl-2 col-sm-5 mb-xl-6 mb-6">
-      <a href="" class="btn-link">
+      <a href="/senarai" class="btn-link">
           <div class="card">
             <div class="card-header p-3 pt-2">
               <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
@@ -58,4 +58,3 @@
       
       @include('layout.layout')
 
-</html>

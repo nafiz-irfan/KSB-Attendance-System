@@ -17,5 +17,10 @@ class AttendanceController extends Controller
     {
         return view('kelas', ['id' => $id]);
     }
+
+    public function senarai()
+    {
+        return view('senarai_pelajar');
+    }
 }
 
