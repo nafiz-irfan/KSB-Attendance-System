@@ -22,5 +22,10 @@ class AttendanceController extends Controller
     {
         return view('senarai_pelajar');
     }
+
+    public function edit($id)
+    {
+        return view('detail_pelajar', ['id' => $id]);
+    }
 }
 

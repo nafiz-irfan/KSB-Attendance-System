@@ -1,5 +1,5 @@
 <title>
-    Home - Dashboard
+    Dashboard Utama SK Kari
   </title>
 @include('layout.header')
 

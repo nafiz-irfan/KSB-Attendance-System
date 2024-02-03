@@ -34,7 +34,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                  @for($i = 1; $i < 10; $i++)
+                  @for($i = 1; $i < 50; $i++)
                     <tr>
                       <td>
                         <div class="d-flex px-2 py-1">
@@ -58,7 +58,7 @@
                         <span class="text-secondary text-xs font-weight-bold">012-934 5617</span>
                       </td>
                       <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                        <a href="/edit/{{$i}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                           Edit
                         </a>
                       </td>

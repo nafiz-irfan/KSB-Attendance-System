@@ -17,3 +17,4 @@ use App\Http\Controllers\AttendanceController;
 Route::get('/', [AttendanceController::class, 'index']);
 Route::get('/kelas/{id}', [AttendanceController::class, 'show']);
 Route::get('/senarai', [AttendanceController::class, 'senarai']);
+Route::get('/edit/{id}', [AttendanceController::class, 'edit']);

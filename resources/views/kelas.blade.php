@@ -1,5 +1,5 @@
 <title>
-    Home - Dashboard
+    Dashboard Pelajar Tahun {{$id}}
   </title>
 @include('layout.header')
     <!-- End Navbar -->
