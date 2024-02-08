@@ -50,7 +50,7 @@
                         </td>
                     @endif
                     <td class="align-middle text-center">
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Edit
                         </button>
                     </td>

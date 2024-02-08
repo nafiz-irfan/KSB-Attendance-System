@@ -27,5 +27,20 @@ class AttendanceController extends Controller
     {
         return view('detail_pelajar', ['id' => $id]);
     }
+
+    public function daftarGuru()
+    {
+        return view('daftar_guru');
+    }
+
+    public function senaraiGuru()
+    {
+        return view('senarai_guru');
+    }
+
+    public function laporanPelajar()
+    {
+        return view('laporan_pelajar');
+    }
 }
 
