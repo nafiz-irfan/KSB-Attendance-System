@@ -45,5 +45,10 @@ class AttendanceController extends Controller
     {
         return view('laporan_pelajar');
     }
+
+    public function landingPage()
+    {
+        return view('landingpage');
+    }
 }
 
