@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class AttendanceController extends Controller
 {
@@ -35,7 +36,9 @@ class AttendanceController extends Controller
 
     public function senaraiGuru()
     {
-        return view('senarai_guru');
+        $Gurus = User::all();
+        dump($Gurus);
+        return view('senarai_guru', ['guru' => $Gurus]);
     }
 
     public function laporanPelajar()

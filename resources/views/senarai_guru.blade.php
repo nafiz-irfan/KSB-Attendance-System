@@ -34,6 +34,9 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach ($guru as $guru)
+                        <p>{{ $guru->name }}</p>
+                    @endforeach
                   @for($i = 1; $i < 10; $i++)
                     <tr>
                       <td>
