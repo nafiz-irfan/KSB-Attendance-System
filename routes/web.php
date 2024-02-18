@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/laporan_pelajar', [AttendanceController::class, 'laporanPelajar']);
 });
 
-Route::get('/landingpage', [AttendanceController::class, 'landingPage']);
+Route::post('/landingpage', [AttendanceController::class, 'rekodKehadiran']);
+Route::get('/landingpage', [AttendanceController::class, 'landingpage']);
 
 require __DIR__.'/auth.php';

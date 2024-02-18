@@ -1,4 +1,9 @@
-
+@php
+  date_default_timezone_set("Asia/Kuala_Lumpur");
+  $date=date('d-M-Y');
+  $current_date = date('d-M-Y H:i');
+  $time = date('H:i',strtotime($current_date));
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,15 +48,18 @@
                   <p class="mb-0"></p>
                 </div>
                 <div class="card-body">
-                  <form role="form">
+                  <form role="form" action="" method="POST">
+                    @csrf
                     <div class="input-group input-group-outline mb-3">
                       <label class="form-label">Card ID</label>
-                      <input id="card_id" type="text" class="form-control" autofocus>
+                      <input id="card_id" name="card_id" type="text" class="form-control" autofocus>
                     </div>
                     <div class="text-center">
-                      <button type="button" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Submit</button>
+                      <!-- <button type="button" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Submit</button> -->
                     </div>
                   </form>
+                  <h4 class="font-weight-bolder text-center">{{session('msg')}}</h4>
+                  <p class="mb-4 text-center"></p>
                 </div>
               </div>
             </div>
