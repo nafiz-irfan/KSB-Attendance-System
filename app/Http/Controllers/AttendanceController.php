@@ -71,19 +71,19 @@ class AttendanceController extends Controller
 
             if (!$checkkehadiran) {
             // Simpan data kehadiran
-            $attendance = new Attendance;
-            $attendance->dependent_id = $dependent_id; 
-            $attendance->date = date('Y-m-d');
+                $attendance = new Attendance;
+                $attendance->dependent_id = $dependent_id; 
+                $attendance->date = date('Y-m-d');
 
             try {
-            $attendance->save();
-            $msg = "Success attend";
+                $attendance->save();
+                $msg = "Success attend";
             } catch (\Exception $e) {
                 // Ohsitkokodail error checking
-            $msg = "Oh Sit Kokodail: " . $e->getMessage();
+                $msg = "Oh Sit Kokodail: " . $e->getMessage();
             }
             } else {
-            $msg = "Kehadiran untuk tarikh ini sudah didaftarkan.";
+                $msg = "Kehadiran untuk tarikh ini sudah didaftarkan.";
             }
         } else {
             // kalau data tak wujud
