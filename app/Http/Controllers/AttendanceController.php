@@ -10,42 +10,42 @@ use DB;
 class AttendanceController extends Controller
 {
     // Show the welcome view
-    public function index()
+    public function index(Request $request)
     {
-        return view('welcome');
+        return view('welcome', ['user' => $request->user()]);
     }
 
     // Show the 'kelas' view with the provided $id parameter
-    public function show($id)
+    public function show($id, Request $request)
     {
-        return view('kelas', ['id' => $id]);
+        return view('kelas', ['id' => $id], ['user' => $request->user()]);
     }
 
-    public function senarai()
+    public function senarai(Request $request)
     {
-        return view('senarai_pelajar');
+        return view('senarai_pelajar', ['user' => $request->user()]);
     }
 
-    public function edit($id)
+    public function edit($id, Request $request)
     {
-        return view('detail_pelajar', ['id' => $id]);
+        return view('detail_pelajar', ['id' => $id], ['user' => $request->user()]);
     }
 
-    public function daftarGuru()
+    public function daftarGuru(Request $request)
     {
-        return view('daftar_guru');
+        return view('daftar_guru', ['user' => $request->user()]);
     }
 
-    public function senaraiGuru()
+    public function senaraiGuru(Request $request)
     {
         $Gurus = User::all();
         dump($Gurus);
-        return view('senarai_guru', ['guru' => $Gurus]);
+        return view('senarai_guru', ['guru' => $Gurus], ['user' => $request->user()]);
     }
 
-    public function laporanPelajar()
+    public function laporanPelajar(Request $request)
     {
-        return view('laporan_pelajar');
+        return view('laporan_pelajar', ['user' => $request->user()]);
     }
 
     public function landingpage()

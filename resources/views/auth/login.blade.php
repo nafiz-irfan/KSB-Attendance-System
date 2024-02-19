@@ -54,8 +54,7 @@
                           {{ __('Log in') }}
                      </x-primary-button>
                   <p class="mt-4 text-sm text-center">
-                    Don't have an account?
-                    <a href="{{ route('password.request') }}" class="text-primary text-gradient font-weight-bold">Forgot</a>
+                    <a href="{{ route('password.request') }}" class="text-primary text-gradient font-weight-bold">Forgot Password</a>
                   </p>
                 </form>
               </div>
