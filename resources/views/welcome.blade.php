@@ -6,9 +6,9 @@
     <!-- End Navbar -->
     <div class="container-fluid py-4">
     <div class="row">
-      @for($i = 1; $i < 7; $i++)
+       @foreach ($semuakelas as $kelas)
       <div class="col-xl-2 col-sm-2 mb-xl-5 mb-4">
-      <a href="/kelas/{{$i}}" class="btn-link">
+      <a href="/kelas/{{$kelas->class_id}}" class="btn-link">
        <div class="card">
          <div class="card-header mx-4 p-3 text-center">
           <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg">
@@ -16,15 +16,15 @@
              </div>
              </div>
         <div class="card-body pt-0 p-3 text-center">
-            <h6 class="text-center mb-0">Tahun {{$i}}</h6>
+            <h6 class="text-center mb-0">Tahun {{$kelas->class_name}}</h6>
                 <span class="text-xs">SK Kari</span>
                 <hr class="horizontal dark my-3">
-                <h5 class="mb-1">200 Pelajar</h5>
+                <h5 class="mb-1">{{ $kelas->totalPelajar }} Pelajar</h5>
             </div>
          </div>
         </a>
         </div>
-        @endfor
+        @endforeach
       <div class="row mt-4">
         <div class="col-lg-4 col-md-6 mt-4 mb-4">
           <div class="card z-index-2 ">

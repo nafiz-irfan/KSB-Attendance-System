@@ -12,8 +12,23 @@ class AttendanceController extends Controller
     // Show the welcome view
     public function index(Request $request)
     {
-        return view('welcome', ['user' => $request->user()]);
+        $semuakelas = DB::select('SELECT * FROM class_table WHERE class_id IN (SELECT DISTINCT class_id FROM dependent_table)');
+        // $semuakelas untuk dptkan kelas yg ada student 
+        $totalPelajar = 0;
+    
+        foreach ($semuakelas as $kelas) {
+            $classId = $kelas->class_id; 
+    
+            $jumlahpelajar = DB::select("SELECT COUNT(*) as total FROM dependent_table WHERE class_id = $classId");
+            $kelas->totalPelajar = $jumlahpelajar[0]->total;
+        }
+    
+        return view('welcome', [
+            'user' => $request->user(),
+            'semuakelas' => $semuakelas,
+        ]);
     }
+    
 
     // Show the 'kelas' view with the provided $id parameter
     public function show($id, Request $request)
