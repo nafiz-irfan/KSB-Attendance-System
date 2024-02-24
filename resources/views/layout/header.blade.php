@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function() {
   //   console.log('${activePage} : ' + link);
   // }
   
-});
+// });
 
 // navlinks.forEach(link => {
 //   console.log('link : ' + link);

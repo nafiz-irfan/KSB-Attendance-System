@@ -64,6 +64,19 @@
                                 </div>
                                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
 
+                                <!-- School Type -->
+                                <div class="dropdown">
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      Dropdown button
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                      <a class="dropdown-item" href="#">Action</a>
+                                      <a class="dropdown-item" href="#">Another action</a>
+                                      <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
+                                  </div>
+                                <x-input-error :messages="$errors->get('name')" class="mt-2" />
+
                                 <x-primary-button class="btn bg-gradient-primary w-100 my-4 mb-2">
                                     {{ __('Register') }}
                                 </x-primary-button>
