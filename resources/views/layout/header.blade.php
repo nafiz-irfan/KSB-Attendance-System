@@ -52,7 +52,17 @@
       background-color: pink;
     }
 </style>
-
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var path = window.location.pathname;
+  var navLinks = document.querySelectorAll('.nav-link');
+  navLinks.forEach(function(navLink) {
+    if (navLink.getAttribute('href') === path) {
+      navLink.classList.add('active', 'bg-gradient-primary');
+    }
+  });
+});
+</script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -68,7 +78,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-white " href="/">
+          <a class="nav-link text-white tabcontent " href="/" >
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
@@ -76,7 +86,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="/laporan_pelajar">
+          <a class="nav-link text-white tabcontent" href="/laporan_pelajar">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assessment</i>
             </div>
@@ -87,7 +97,7 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="/daftar_guru">
+          <a class="nav-link text-white tabcontent" href="/daftar_guru">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">control_point</i>
             </div>
@@ -95,7 +105,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="/senarai_guru">
+          <a class="nav-link text-white tabcontent " href="/senarai_guru">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -112,7 +122,7 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
+            <li class="breadcrumb-item text-sm text-dark " aria-current="page">Dashboard</li>
           </ol>
           <h6 class="font-weight-bolder mb-0">Dashboard</h6>
         </nav>
