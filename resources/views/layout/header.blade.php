@@ -47,6 +47,10 @@
     .card-registration .select-arrow {
     top: 13px;
     }
+
+    .activate {
+      background-color: pink;
+    }
 </style>
 
 </head>
@@ -64,7 +68,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="/">
+          <a class="nav-link text-white " href="/">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
@@ -136,3 +140,48 @@
       </div>
     </nav>
     
+<script>
+
+// const navLinkEls = document.querySelectorAll('.nav_link text-white');
+// const windowPathname = window.location.pathname;
+
+// console.log('try test'+ windowPathname);
+
+// navLinkEls.forEach(navLinkEl => {
+  
+//   if (navLinkEl.href.includes(windowPathname)){
+//     navLinkEl.classList.add('active bg-gradient-primary');
+//     console.log('try test in if else '+ windowPathname);
+//   }
+
+// });
+
+//active navbar css bootstrap for active 'bg-gradient-primary'
+
+const activePage = window.location.pathname;
+console.log('page' + activePage);
+
+const navlinks = document.querySelectorAll('.nav-link');
+console.log('nav links : ' + navlinks[1]);
+navlinks.forEach(link => {
+
+  if(link.href.includes(activePage)){
+    link.classList.add('activate');
+    console.log('${activePage} : ' + link);
+  }
+
+  // if(link == activePage){
+  //   link.classList.add('activate');
+  //   console.log('${activePage} : ' + link);
+  // }
+  
+});
+
+// navlinks.forEach(link => {
+//   console.log('link : ' + link);
+// });
+
+// console.log('all link : ' + navlinks[5]);
+
+
+</script>
