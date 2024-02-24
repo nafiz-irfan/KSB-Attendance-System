@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function() {
   navLinks.forEach(function(navLink) {
     if (navLink.getAttribute('href') === path) {
       navLink.classList.add('active', 'bg-gradient-primary');
+      
     }
   });
 });
