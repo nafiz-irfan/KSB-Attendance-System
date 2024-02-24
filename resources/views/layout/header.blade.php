@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var navLinks = document.querySelectorAll('.nav-link');
   navLinks.forEach(function(navLink) {
     if (navLink.getAttribute('href') === path) {
-      navLink.classList.add('active', 'bg-gradient-primary'); // Menambahkan kelas 'active' dan 'bg-gradient-primary'
+      navLink.classList.add('active', 'bg-gradient-primary');
     }
   });
 });
