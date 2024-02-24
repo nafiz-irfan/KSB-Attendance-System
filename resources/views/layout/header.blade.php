@@ -47,10 +47,6 @@
     .card-registration .select-arrow {
     top: 13px;
     }
-
-    .activate {
-      background-color: pink;
-    }
 </style>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -168,17 +164,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //active navbar css bootstrap for active 'bg-gradient-primary'
 
-const activePage = window.location.pathname;
-console.log('page' + activePage);
+// const activePage = window.location.pathname;
+// console.log('page' + activePage);
 
-const navlinks = document.querySelectorAll('.nav-link');
-console.log('nav links : ' + navlinks[1]);
-navlinks.forEach(link => {
+// const navlinks = document.querySelectorAll('.nav-link');
+// console.log('nav links : ' + navlinks[1]);
+// navlinks.forEach(link => {
 
-  if(link.href.includes(activePage)){
-    link.classList.add('activate');
-    console.log('${activePage} : ' + link);
-  }
+//   if(link.href.includes(activePage)){
+//     link.classList.add('activate');
+//     console.log('${activePage} : ' + link);
+//   }
 
   // if(link == activePage){
   //   link.classList.add('activate');
