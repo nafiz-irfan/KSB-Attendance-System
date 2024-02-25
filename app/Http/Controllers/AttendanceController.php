@@ -54,11 +54,11 @@ class AttendanceController extends Controller
         $date = now()->toDateString(); 
         $semakkehadiran = [];
 
-        foreach ($listpelajar as $pelajar) {
-            $attendance = Attendance::where('dependent_id', $pelajar->id)
+        foreach ($listpelajar as $dependent) {
+            $attendance = Attendance::where('dependent_id', $dependent->id)
                 ->whereDate('date', $date)
                 ->get();
-            $semakkehadiran[$pelajar->id] = $attendance;
+            $semakkehadiran[$dependent->id] = $attendance;
         }
 
         return view('senarai_pelajar', [
