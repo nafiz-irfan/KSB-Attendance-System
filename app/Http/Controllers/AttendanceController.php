@@ -53,8 +53,9 @@ class AttendanceController extends Controller
 
     public function senaraiGuru(Request $request)
     {
+        $user = $request->user();
         // $Gurus = User::all();
-        $Gurus = DB::select("SELECT * FROM users WHERE role != 'admin'");
+        $Gurus = DB::select("SELECT * FROM users WHERE role != 'admin' AND school_id = ?", [$user->school_id]);
         dump($Gurus);
         return view('senarai_guru', ['guru' => $Gurus], ['user' => $request->user()]);
     }
