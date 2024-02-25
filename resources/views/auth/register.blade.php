@@ -16,6 +16,12 @@
 {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> --}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- SweetAlert  -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+
+{{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> --}}
 
 <!-- Session Status -->
 <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -65,8 +71,19 @@
                                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
 
                                 <!-- School Type -->
+                                
+                                <label for="cars">Choose a car:</label>
+                                <select name="cars" id="cars" class="btn bg-gradient-primary w-100 my-2">
+                                <option value="volvo">Volvo</option>
+                                <option value="saab">Saab</option>
+                                <option value="mercedes">Mercedes</option>
+                                <option value="audi">Audi</option>
+                                </select>
+                                <x-input-error :messages="$errors->get('name')" class="mt-2" />
+
+                                <!-- User Type -->
                                 <div class="dropdown">
-                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                       Dropdown button
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
