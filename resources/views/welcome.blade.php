@@ -17,7 +17,7 @@
              </div>
         <div class="card-body pt-0 p-3 text-center">
             <h6 class="text-center mb-0">Tahun {{$kelas->class_name}}</h6>
-                <span class="text-xs">SK Kari</span>
+                <span class="text-xs">{{ $school->school_name }}</span>
                 <hr class="horizontal dark my-3">
                 <h5 class="mb-1">{{ $kelas->totalPelajar }} Pelajar</h5>
             </div>

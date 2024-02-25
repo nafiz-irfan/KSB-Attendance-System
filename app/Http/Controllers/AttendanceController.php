@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Attendance;
 use DB;
+use App\Models\School; 
 
 class AttendanceController extends Controller
 {
@@ -14,7 +15,9 @@ class AttendanceController extends Controller
     {
         $semuakelas = DB::select('SELECT * FROM class_table WHERE class_id IN (SELECT DISTINCT class_id FROM dependent_table)');
         // $semuakelas untuk dptkan kelas yg ada student 
-        $totalPelajar = 0;
+
+        $user = $request->user();
+        $school = School::where('school_id', $user->school_id)->first();
     
         foreach ($semuakelas as $kelas) {
             $classId = $kelas->class_id; 
@@ -26,6 +29,7 @@ class AttendanceController extends Controller
         return view('welcome', [
             'user' => $request->user(),
             'semuakelas' => $semuakelas,
+            'school' => $school,
         ]);
     }
     
@@ -56,8 +60,13 @@ class AttendanceController extends Controller
         $user = $request->user();
         // $Gurus = User::all();
         $Gurus = DB::select("SELECT * FROM users WHERE role != 'admin' AND school_id = ?", [$user->school_id]);
-        dump($Gurus);
-        return view('senarai_guru', ['guru' => $Gurus], ['user' => $request->user()]);
+        // dump($Gurus);
+        $school = School::where('school_id', $user->school_id)->first();
+        return view('senarai_guru', [
+        'guru' => $Gurus,
+        'user' => $user,
+        'school' => $school,
+    ]);
     }
 
     public function laporanPelajar(Request $request)
