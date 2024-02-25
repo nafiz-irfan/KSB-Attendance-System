@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\DB;
 
 class RegisteredUserController extends Controller
 {
@@ -21,7 +22,30 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        
+        // $semuakelas = DB::select('SELECT * FROM class_table WHERE class_id IN (SELECT DISTINCT class_id FROM dependent_table)');
+        // // $semuakelas untuk dptkan kelas yg ada student 
+        // $totalPelajar = 0;
+    
+        // foreach ($semuakelas as $kelas) {
+        //     $classId = $kelas->class_id; 
+    
+        //     $jumlahpelajar = DB::select("SELECT COUNT(*) as total FROM dependent_table WHERE class_id = $classId");
+        //     $kelas->totalPelajar = $jumlahpelajar[0]->total;
+        // }
+    
+        // return view('welcome', [
+        //     'user' => $request->user(),
+        //     'semuakelas' => $semuakelas,
+        // ]);
+
+        $semuaSk = DB::select('SELECT * FROM school_table');
+
+
+        return view('auth.register', [
+            'sekolah' => $semuaSk,
+            // dump($semuaSk),
+        ]);
     }
 
     /**

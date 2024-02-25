@@ -72,26 +72,26 @@
 
                                 <!-- School Type -->
                                 
-                                <label for="cars">Choose a car:</label>
-                                <select name="cars" id="cars" class="btn bg-gradient-primary w-100 my-2">
-                                <option value="volvo">Volvo</option>
-                                <option value="saab">Saab</option>
-                                <option value="mercedes">Mercedes</option>
-                                <option value="audi">Audi</option>
-                                </select>
+                                <div class="input-group input-group-outline mb-3">
+                                    <!-- <label class="form-label">Role</label> -->
+                                     <select name="roles" id="roles" class="form-select input spaces" required>
+                                        <option  selected disabled>Pilih Peranan</option>
+                                        <option value="Admin">Admin</option>
+                                         <option value="Teacher">Teacher</option>
+                                      </select>
+                                </div>
                                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
 
                                 <!-- User Type -->
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      Dropdown button
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                      <a class="dropdown-item" href="#">Action</a>
-                                      <a class="dropdown-item" href="#">Another action</a>
-                                      <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
-                                  </div>
+                                <div class="input-group input-group-outline mb-3">
+                                    <!-- <label class="form-label">Role</label> -->
+                                     <select name="roles" id="roles" class="form-select input spaces" required>
+                                            <option  selected disabled>Pilih Sekolah</option>
+                                        @foreach ($sekolah as $sk)
+                                            <option value="Admin">{{ $sk->school_name }}</option>
+                                        @endforeach
+                                      </select>
+                                </div>
                                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
 
                                 <x-primary-button class="btn bg-gradient-primary w-100 my-4 mb-2">
@@ -111,3 +111,9 @@
         </div>
     </div>
 </main>
+
+<style>
+    .spaces {
+        padding-left: 15px; 
+    }
+</style>
