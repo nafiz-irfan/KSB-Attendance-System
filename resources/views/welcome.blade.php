@@ -8,7 +8,7 @@
     <div class="row">
        @foreach ($semuakelas as $kelas)
       <div class="col-xl-2 col-sm-2 mb-xl-5 mb-4">
-      <a href="/kelas/{{$kelas->class_id}}" class="btn-link">
+      <a href="/senarai/{{$kelas->class_id}}" class="btn-link">
        <div class="card">
          <div class="card-header mx-4 p-3 text-center">
           <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg">

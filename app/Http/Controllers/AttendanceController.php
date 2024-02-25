@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Attendance;
 use DB;
 use App\Models\School; 
+use App\Models\Kelas; 
 
 class AttendanceController extends Controller
 {
@@ -40,9 +41,23 @@ class AttendanceController extends Controller
         return view('kelas', ['id' => $id], ['user' => $request->user()]);
     }
 
-    public function senarai(Request $request)
+    //function utk keluarkan senarai student
+    public function senarai($id, Request $request)
     {
-        return view('senarai_pelajar', ['user' => $request->user()]);
+        $user = $request->user();
+        $listpelajar = DB::select("SELECT * FROM dependent_table WHERE class_id = $id AND school = ?", [$user->school_id]);
+        $namakelas = DB::select("SELECT * FROM class_table WHERE class_id = $id AND school_id = ?", [$user->school_id]);
+
+        $namakelas = Kelas::where('class_id', $id)
+                ->where ('school_id', $user->school_id)
+                ->first();
+
+        // return view('senarai_pelajar',['id' => $id], ['user' => $request->user()]);
+        return view('senarai_pelajar', [
+            'user' => $user,
+            'listpelajar' => $listpelajar,
+            'namakelas' => $namakelas
+        ]);
     }
 
     public function edit($id, Request $request)

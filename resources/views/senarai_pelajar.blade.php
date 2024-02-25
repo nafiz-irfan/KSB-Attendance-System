@@ -10,7 +10,7 @@
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Senarai Pelajar Kelas (Nama Kelas)</h6>
+                <h6 class="text-white text-capitalize ps-3">Senarai Pelajar Kelas {{ $namakelas->class_name }}</h6>
               </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -34,16 +34,16 @@
                     </tr>
                   </thead>
                   <tbody>
-                  @for($i = 1; $i < 50; $i++)
+                  @foreach ($listpelajar as $pelajar)
                     <tr>
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="../assets/img/team-4.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user6">
+                            <img src="{{ $pelajar->profile_image_path }}" class="avatar avatar-sm me-3 border-radius-lg" alt="user6">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Muhammad Syamsul</h6>
-                            <p class="text-xs text-secondary mb-0">Johan</p>
+                            <h6 class="mb-0 text-sm">{{ $pelajar->name }}</h6>
+                            <!-- <p class="text-xs text-secondary mb-0">Johan</p> -->
                           </div>
                         </div>
                       </td>
@@ -58,12 +58,12 @@
                         <span class="text-secondary text-xs font-weight-bold">012-934 5617</span>
                       </td>
                       <td class="align-middle">
-                        <a href="/edit/{{$i}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                        <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                           Edit
                         </a>
                       </td>
                     </tr>
-                    @endfor
+                    @endforeach
                   </tbody>
                 </table>
               </div>

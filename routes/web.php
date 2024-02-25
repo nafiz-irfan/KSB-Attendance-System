@@ -24,8 +24,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/', [AttendanceController::class, 'index']);
-    Route::get('/kelas/{id}', [AttendanceController::class, 'show']);
-    Route::get('/senarai', [AttendanceController::class, 'senarai']);
+    // Route::get('/kelas/{id}', [AttendanceController::class, 'show']);
+    Route::get('/senarai/{id}', [AttendanceController::class, 'senarai']);
     Route::get('/edit/{id}', [AttendanceController::class, 'edit']);
     Route::get('/daftar_guru', [AttendanceController::class, 'daftarGuru']);
     Route::get('/senarai_guru', [AttendanceController::class, 'senaraiGuru']);
