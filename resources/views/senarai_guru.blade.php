@@ -95,7 +95,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Muhammad Syamsul Johan</h5>
+        <h5 class="modal-title" id="exampleModalLabel">{{ $guru->name }}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -103,13 +103,13 @@
           <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Nama</label>
             <div class="col-sm-10">
-              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="Muhammad Syamsul Johan">
+              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ $guru->name }}">
             </div>
           </div>
           <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
-              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="syamsul.skkari@edu.my">
+              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ $guru->email }}">
             </div>
           </div>
           <div class="form-group row">

@@ -46,19 +46,30 @@ class AttendanceController extends Controller
     {
         $user = $request->user();
         $listpelajar = DB::select("SELECT * FROM dependent_table WHERE class_id = $id AND school = ?", [$user->school_id]);
-        $namakelas = DB::select("SELECT * FROM class_table WHERE class_id = $id AND school_id = ?", [$user->school_id]);
-
+    
         $namakelas = Kelas::where('class_id', $id)
-                ->where ('school_id', $user->school_id)
+                ->where('school_id', $user->school_id)
                 ->first();
 
-        // return view('senarai_pelajar',['id' => $id], ['user' => $request->user()]);
+        $date = now()->toDateString(); 
+        $semakkehadiran = [];
+
+        foreach ($listpelajar as $pelajar) {
+            $attendance = Attendance::where('dependent_id', $pelajar->id)
+                ->whereDate('date', $date)
+                ->get();
+            $semakkehadiran[$pelajar->id] = $attendance;
+        }
+
         return view('senarai_pelajar', [
             'user' => $user,
             'listpelajar' => $listpelajar,
-            'namakelas' => $namakelas
+            'namakelas' => $namakelas,
+            'semakkehadiran' => $semakkehadiran,
+            'id' => $id, 
         ]);
     }
+
 
     public function edit($id, Request $request)
     {

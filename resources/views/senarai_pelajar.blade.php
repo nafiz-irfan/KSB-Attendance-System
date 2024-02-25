@@ -52,8 +52,17 @@
                         <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
                       </td>
                       <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Hadir</span>
-                      </td>
+                        @php $hadir = 0; @endphp 
+                        @foreach ($semakkehadiran[$pelajar->id] ?? [] as $kehadiran)
+                            <span class="badge badge-sm bg-gradient-success">Hadir</span>
+                            @php $hadir = 1; @endphp
+                            @break
+                        @endforeach
+                        @if ($hadir == 0)
+                            <span class="badge badge-sm bg-gradient-danger">Tidak Hadir</span>
+                        @endif
+                    </td>
+
                       <td class="align-middle text-center">
                         <span class="text-secondary text-xs font-weight-bold">012-934 5617</span>
                       </td>
