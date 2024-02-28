@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'admin@ksb.com',
                 'password'  => Hash::make('admin123'),
                 'role'  => 'admin',
-
+                'school_id' => '1'
             ],
             //Ad mock teacher
             [
@@ -30,6 +30,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'amir@ksb.com',
                 'password'  => Hash::make('amir123'),
                 'role'  => 'teacher',
+                'school_id' => '1'
             ],
         ]);
     }
