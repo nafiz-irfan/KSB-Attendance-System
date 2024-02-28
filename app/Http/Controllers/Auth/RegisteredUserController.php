@@ -38,7 +38,7 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         //get class_id from class_name
-        $schoolName = $request->get('school');
+        $schoolName = $request->school;
         $schoolId = DB::select("SELECT school_id FROM school_table WHERE school_name = ?", [$schoolName]);
         
         $request->validate([
@@ -51,16 +51,11 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            //TODO add peranan and sekolah
             'role' => $request->role,
-            'school_id' => $schoolId,
+            'school_id' => intval($schoolId),
         ]);
 
         event(new Registered($user));
-
-        // Auth::login($user);
-        // Alert function
-        // dd($request->get('school'));
 
         return redirect(RouteServiceProvider::HOME);
     }
