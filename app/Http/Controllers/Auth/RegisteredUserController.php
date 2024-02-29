@@ -22,12 +22,9 @@ class RegisteredUserController extends Controller
      */
     public function create(Request $request): View
     {
-    public function create(Request $request): View
-    {
         $semuaSk = DB::select('SELECT * FROM school_table');
 
         return view('auth.register', [
-            'user' => $request->user(),
             'user' => $request->user(),
             'sekolah' => $semuaSk,
         ]);
@@ -54,17 +51,11 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            //TODO add peranan and sekolah
             'role' => $request->role,
             'school_id' => intval($schoolId),
         ]);
 
         event(new Registered($user));
-
-        // Auth::login($user);
-        // Alert function
-        // dd($request->get('school'));
-        // dd($request->get('school'));
 
         return redirect(RouteServiceProvider::HOME);
     }
