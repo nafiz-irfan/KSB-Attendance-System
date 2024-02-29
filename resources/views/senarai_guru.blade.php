@@ -16,16 +16,14 @@
               </div>
             </div>
             <div class="card-body px-0 pb-2">
-              <div class="table-responsive p-0">
-                <table class="table align-items-center mb-0">
-                    
-                <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                     <div class="input-group input-group-outline mx-3">
-                    <label class="form-label">Taip nama guru di sini untuk membuat carian....</label>
-                    <input type="text" id="searchInput" size="10" class="form-control">
+                    <label class="form-label">Cari guru</label>
+                    <input type="text" id="searchInput" class="form-control">
                     </div>
                 </div>
-
+              <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0" id="teacherTable">
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Guru</th>
@@ -89,6 +87,24 @@
       </div>
     </div>
 @include('layout.layout')
+
+<script>
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('input', function() {
+        const searchValue = this.value.toLowerCase();
+        const rows = document.querySelectorAll('#teacherTable tbody tr');
+
+        rows.forEach(row => {
+            const name = row.querySelector('h6').textContent.toLowerCase();
+            if (name.includes(searchValue)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+</script>
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalGuru" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
