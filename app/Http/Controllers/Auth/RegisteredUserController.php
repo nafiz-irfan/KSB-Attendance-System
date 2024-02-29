@@ -22,9 +22,12 @@ class RegisteredUserController extends Controller
      */
     public function create(Request $request): View
     {
+    public function create(Request $request): View
+    {
         $semuaSk = DB::select('SELECT * FROM school_table');
 
         return view('auth.register', [
+            'user' => $request->user(),
             'user' => $request->user(),
             'sekolah' => $semuaSk,
         ]);
@@ -60,6 +63,7 @@ class RegisteredUserController extends Controller
 
         // Auth::login($user);
         // Alert function
+        // dd($request->get('school'));
         // dd($request->get('school'));
 
         return redirect(RouteServiceProvider::HOME);
