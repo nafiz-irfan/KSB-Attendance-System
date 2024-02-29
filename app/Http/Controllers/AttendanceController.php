@@ -13,11 +13,10 @@ class AttendanceController extends Controller
 {
     // Show the welcome view
     public function index(Request $request)
-    {
-        $semuakelas = DB::select('SELECT * FROM class_table WHERE class_id IN (SELECT DISTINCT class_id FROM dependent_table)');
-        // $semuakelas untuk dptkan kelas yg ada student 
-
+    {   
         $user = $request->user();
+        $semuakelas = DB::select('SELECT * FROM class_table WHERE school_id = ? AND class_id  IN (SELECT DISTINCT class_id FROM dependent_table)', [$user->school_id]);
+        // $semuakelas untuk dptkan kelas yg ada student 
         $school = School::where('school_id', $user->school_id)->first();
     
         foreach ($semuakelas as $kelas) {
