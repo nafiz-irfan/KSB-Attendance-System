@@ -9,10 +9,12 @@
                     </div>
                 </div>
                 <div class="card-body px-0 pb-2">
-                    <div class="input-group input-group-outline mx-3 mb-3">
+                    <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                      <div class="input-group input-group-outline mx-3">
                         <label class="form-label">Cari pelajar</label>
                         <input type="text" id="searchInput" class="form-control">
                     </div>
+                </div>
                     <div class="table-responsive p-0">
                         <table class="table align-items-center mb-0" id="studentTable">
                             <thead>
