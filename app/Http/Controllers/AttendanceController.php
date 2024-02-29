@@ -5,13 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Attendance;
-use App\Models\Dependent;
 use DB;
 use App\Models\School; 
-use App\Models\Kelas;
-use Illuminate\Support\Facades\DB as FacadesDB;
-
-use function PHPUnit\Framework\stringContains;
+use App\Models\Kelas; 
 
 class AttendanceController extends Controller
 {
@@ -30,38 +26,6 @@ class AttendanceController extends Controller
             $jumlahpelajar = DB::select("SELECT COUNT(*) as total FROM dependent_table WHERE class_id = $classId");
             $kelas->totalPelajar = $jumlahpelajar[0]->total;
         }
-        
-        //panggil semua murid yg sama school dgn teacher pkai eloquent
-
-        $jumlahpelajar = DB::select("SELECT COUNT(*) as total FROM dependent_table WHERE class_id = $classId");
-        $kelas->totalPelajar = $jumlahpelajar[0]->total;
-
-        $SemuaMurid = DB::select('SELECT * FROM dependent_table WHERE school = ?' , [$user->school_id]);
-        // $SemuaMurid = Dependent::where('school', $user->school_id);
-        //murid join with class name
-        $SemuaMuridKelas = FacadesDB::table('dependent_table')
-                            ->join('class_table', 'dependent_table.class_id', '=', 'class_table.class_id')
-                            ->select('dependent_table.*', 'class_table.class_name')
-                            ->get();
-        //hold data semua murid + class untuk loop count murid based on tahun
-        // $Darjah = [];
-        // foreach ($SemuaMuridKelas as $Murid) {
-            
-        //     if (str_contains($Murid->class_name, '1')) {
-        //         $Darjah['1']++;
-        //     }
-        //     elseif (str_contains($Murid->class_name, '2')) {
-        //         $Darjah[1]++;
-        //     }
-        // }
-        // dd($Darjah[]);
-
-
-        // $SemuaMuridKelas = DB::select('SELECT * FROM dependent_table, class_table.class_name INNER JOIN class_table ON dependent_table.class_id=class_table.class_id');
-        // dd($SemuaMuridKelas);
-        // $skID = $user->school_id;
-        // dd($school);
-        // $murid = DB::select('SELECT * FROM depedent_table WHERE ', [1])
     
         return view('welcome', [
             'user' => $request->user(),
