@@ -20,31 +20,13 @@ class RegisteredUserController extends Controller
     /**
      * Display the registration view.
      */
-    public function create(): View
+    public function create(Request $request): View
     {
-        
-        // $semuakelas = DB::select('SELECT * FROM class_table WHERE class_id IN (SELECT DISTINCT class_id FROM dependent_table)');
-        // // $semuakelas untuk dptkan kelas yg ada student 
-        // $totalPelajar = 0;
-    
-        // foreach ($semuakelas as $kelas) {
-        //     $classId = $kelas->class_id; 
-    
-        //     $jumlahpelajar = DB::select("SELECT COUNT(*) as total FROM dependent_table WHERE class_id = $classId");
-        //     $kelas->totalPelajar = $jumlahpelajar[0]->total;
-        // }
-    
-        // return view('welcome', [
-        //     'user' => $request->user(),
-        //     'semuakelas' => $semuakelas,
-        // ]);
-
         $semuaSk = DB::select('SELECT * FROM school_table');
 
-
         return view('auth.register', [
+            'user' => $request->user(),
             'sekolah' => $semuaSk,
-            // dump($semuaSk),
         ]);
     }
 
@@ -55,6 +37,12 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        //get class_id from class_name
+        $schoolName = $request->school;
+        $schoolId = DB::select("SELECT school_id FROM school_table WHERE school_name = ?", [$schoolName]);
+
+        // dd($request->all(), $schoolId, intval($schoolId));
+        
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
@@ -65,12 +53,11 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => $request->role,
+            'school_id' => intval($schoolId),
         ]);
 
         event(new Registered($user));
-
-        // Auth::login($user);
-        // Alert function
 
         return redirect(RouteServiceProvider::HOME);
     }

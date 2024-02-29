@@ -1,28 +1,7 @@
-<!--     Fonts and icons     -->
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
-<!-- Nucleo Icons -->
-<link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-<link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
-<!-- Font Awesome Icons -->
-<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-<!-- Material Icons -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-<!-- CSS Files -->
-<link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
-<!-- Nepcha Analytics (nepcha.com) -->
-<!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
-<script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
-<!-- Bootstrap links -->
-{{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> --}}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<!-- SweetAlert  -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
-
-{{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> --}}
-
+<title>
+    Dashboard Utama SK Kari
+  </title>
+@include('layout.header')
 <!-- Session Status -->
 <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -69,30 +48,27 @@
                                     <input class="form-control" id="password_confirmation" type="password" name="password_confirmation" placeholder="Confirm Password" required autocomplete="new-password">
                                 </div>
                                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                                
+                                <!-- Role Type -->
+                                <div class="input-group input-group-outline mb-3">
+                                    <select name="role" id="role" class="form-select input spaces" required>
+                                        <option selected disabled>Pilih Peranan</option>
+                                        <option value="admin">Admin</option>
+                                        <option value="teacher">Teacher</option>
+                                    </select>
+                                </div>
+                                <x-input-error :messages="$errors->get('role')" class="mt-2" />
 
                                 <!-- School Type -->
-                                
                                 <div class="input-group input-group-outline mb-3">
-                                    <!-- <label class="form-label">Role</label> -->
-                                     <select name="roles" id="roles" class="form-select input spaces" required>
-                                        <option  selected disabled>Pilih Peranan</option>
-                                        <option value="Admin">Admin</option>
-                                         <option value="Teacher">Teacher</option>
-                                      </select>
-                                </div>
-                                <x-input-error :messages="$errors->get('name')" class="mt-2" />
-
-                                <!-- User Type -->
-                                <div class="input-group input-group-outline mb-3">
-                                    <!-- <label class="form-label">Role</label> -->
-                                     <select name="roles" id="roles" class="form-select input spaces" required>
-                                            <option  selected disabled>Pilih Sekolah</option>
+                                    <select name="school" id="school" class="form-select input spaces" required>
+                                        <option selected disabled>Pilih Sekolah</option>
                                         @foreach ($sekolah as $sk)
-                                            <option value="Admin">{{ $sk->school_name }}</option>
+                                        <option value="{{ $sk->school_name }}">{{ $sk->school_name }}</option>
                                         @endforeach
-                                      </select>
+                                    </select>
                                 </div>
-                                <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                                <x-input-error :messages="$errors->get('school')" class="mt-2" />
 
                                 <x-primary-button class="btn bg-gradient-primary w-100 my-4 mb-2">
                                     {{ __('Register') }}
