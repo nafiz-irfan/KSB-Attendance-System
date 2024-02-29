@@ -39,7 +39,7 @@ class RegisteredUserController extends Controller
     {
         //get class_id from class_name
         $schoolName = $request->school;
-        $schoolId = DB::select("SELECT school_id FROM school_table WHERE school_name = ?", [$schoolName]);
+        $schoolId = DB::select("SELECT school_id as id FROM school_table WHERE school_name = ?", [$schoolName]);
 
         // dd($request->all(), $schoolId, intval($schoolId));
         
@@ -54,7 +54,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => $request->role,
-            'school_id' => intval($schoolId),
+            'school_id' => $schoolId[0]->id,
         ]);
 
         event(new Registered($user));
