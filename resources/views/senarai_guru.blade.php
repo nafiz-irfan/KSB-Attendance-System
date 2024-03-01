@@ -143,8 +143,6 @@
             </div>
           </div>
         </form>
-        <hr class="dark horizontal">
-        Ubah Kata Laluan?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success">Simpan</button>
