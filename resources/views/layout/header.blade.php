@@ -90,6 +90,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <span class="nav-link-text ms-1">Laporan Kehadiran Pelajar</span>
           </a>
         </li>
+        @if ($user->role != 'teacher')
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
         </li>
@@ -109,6 +110,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <span class="nav-link-text ms-1">Senarai Guru</span>
           </a>
         </li>
+        @endif
       </ul>
     </div>
   </aside>
