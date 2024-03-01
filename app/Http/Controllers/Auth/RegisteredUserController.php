@@ -22,12 +22,24 @@ class RegisteredUserController extends Controller
      */
     public function create(Request $request): View
     {
-        $semuaSk = DB::select('SELECT * FROM school_table');
-
+        $user = $request->user();
+        $check = DB::select('SELECT * FROM users WHERE role != "superadmin" AND id = ?', [$user->id]);
+        $semuaSk = DB::select('SELECT * FROM school_table WHERE school_id =?', [$user->school_id]);
+        
+    
+        if ($check == true){
         return view('auth.register', [
             'user' => $request->user(),
             'sekolah' => $semuaSk,
         ]);
+        }else{
+            
+            $semuaSk = DB::select('SELECT * FROM school_table');
+            return view('auth.register', [
+                'user' => $request->user(),
+                'sekolah' => $semuaSk,
+            ]);
+        }
     }
 
     /**
