@@ -24,9 +24,7 @@
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Pelajar</th>
-                                    <!-- {{-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Jumlah Kehadiran</th> --> --}}
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kehadiran Hari Ini</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kontak Penjaga</th>
                                     <th class="text-secondary opacity-7"></th>
                                 </tr>
                             </thead>
