@@ -1,5 +1,5 @@
 <title>
-    Dashboard Utama SK Kari
+    Dashboard {{ $school->school_name }}
   </title>
 @include('layout.header')
 

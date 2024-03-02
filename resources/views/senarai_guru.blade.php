@@ -1,5 +1,5 @@
 <title>
-    Sistem - Senarai Guru
+    Senarai Guru {{ $school->school_name }}
   </title>
 
   
