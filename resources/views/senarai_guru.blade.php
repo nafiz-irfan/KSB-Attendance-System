@@ -27,9 +27,8 @@
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Guru</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 align-middle text-center">Kontak Nombor</th>
-                      {{-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kehadiran Hari Ini</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kontak Penjaga</th> --}}
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 align-middle text-center">Role</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 align-middle text-center">Kontak Nombor</th> 
                       <th class="text-secondary opacity-7"></th>
                     </tr>
                   </thead>
@@ -46,6 +45,9 @@
                             <!-- <p class="text-xs text-secondary mb-0">Johan</p> -->
                           </div>
                         </div>
+                      </td>
+                      <td class="align-middle text-center">
+                        <span class="text-secondary text-xs font-weight-bold">{{ $guru->role }}</span>
                       </td>
                       <td class="align-middle text-center">
                         <span class="text-secondary text-xs font-weight-bold">{{ $guru->email }}</span>
@@ -141,8 +143,6 @@
             </div>
           </div>
         </form>
-        <hr class="dark horizontal">
-        Ubah Kata Laluan?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success">Simpan</button>

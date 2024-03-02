@@ -1,7 +1,11 @@
+<title>
+    Senarai Pelajar {{ $namakelas->class_name }}
+
+</title>
 @include('layout.header')
 <div class="container-fluid py-4">
     <div class="row">
-        <div class="col-8">
+        <div class="col-12">
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
@@ -20,10 +24,10 @@
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Pelajar</th>
-                                    {{-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Jumlah Kehadiran</th> --}}
+                                    <!-- {{-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Jumlah Kehadiran</th> --> --}}
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kehadiran Hari Ini</th>
-                                    {{-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kontak Penjaga</th> --}}
-                                    <th class="text-secondary opacity-7">Action</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kontak Penjaga</th>
+                                    <th class="text-secondary opacity-7"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,10 +44,10 @@
                                             </div>
                                         </div>
                                     </td>
-                                    {{-- <td>
+                                    <!-- <td>
                                         <p class="text-xs font-weight-bold mb-0">100%</p>
-                                        <!-- <p class="text-xs text-secondary mb-0">Developer</p> -->
-                                    </td> --}}
+                                        <p class="text-xs text-secondary mb-0">Developer</p>
+                                    </td> -->
                                     <td class="align-middle text-center text-sm">
                                         @if(count($semakkehadiran[$pelajar->id]) != 0)
                                         <span class="badge badge-sm bg-gradient-success">Hadir</span>
@@ -51,9 +55,9 @@
                                         <span class="badge badge-sm bg-gradient-danger">Tidak Hadir</span>
                                         @endif
                                     </td>
-                                    {{-- <td class="align-middle text-center">
+                                    <!-- <td class="align-middle text-center">
                                         <span class="text-secondary text-xs font-weight-bold">012-934 5617</span>
-                                    </td> --}}
+                                    </td> -->
                                     <td class="align-middle">
                                         <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                             Edit

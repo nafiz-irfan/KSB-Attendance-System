@@ -17,6 +17,7 @@ class AttendanceController extends Controller
         $user = $request->user();
         $semuakelas = DB::select('SELECT * FROM class_table WHERE school_id = ? AND class_id  IN (SELECT DISTINCT class_id FROM dependent_table)', [$user->school_id]);
         // $semuakelas untuk dptkan kelas yg ada student 
+
         $school = School::where('school_id', $user->school_id)->first();
     
         foreach ($semuakelas as $kelas) {
@@ -84,7 +85,7 @@ class AttendanceController extends Controller
     {
         $user = $request->user();
         // $Gurus = User::all();
-        $Gurus = DB::select("SELECT * FROM users WHERE role != 'admin' AND school_id = ?", [$user->school_id]);
+        $Gurus = DB::select("SELECT * FROM users WHERE role != 'superadmin' AND school_id = ?", [$user->school_id]);
         // dump($Gurus);
         $school = School::where('school_id', $user->school_id)->first();
         return view('senarai_guru', [
