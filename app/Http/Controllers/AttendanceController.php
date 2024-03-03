@@ -144,6 +144,11 @@ class AttendanceController extends Controller
     
         return redirect('landingpage')->with('msg',$msg);
     }
+
+    public function profile(Request $request, $id)
+    {
+        return view('profile_user', ['id' => $id], ['user' => $request->user()]);
+    }
     
 }
 

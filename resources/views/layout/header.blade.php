@@ -131,8 +131,13 @@ document.addEventListener("DOMContentLoaded", function() {
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
-              <a href="/profile" class="nav-link text-body font-weight-bold px-0">
-                <i class="fa fa-user me-sm-1" ></i>
+            <form method="POST" action="/profile/{{ $user->id }}">
+    @csrf
+    <button type="submit" class="nav-link body font-weight-bold px-0" style="background: none; border: none;">
+        <i class="fa fa-user me-sm-1"></i>
+    </button>
+</form>
+
                 <form method="POST" action="{{ route('logout') }}">
                   @csrf
 
