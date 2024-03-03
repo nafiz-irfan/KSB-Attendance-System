@@ -161,6 +161,11 @@ class AttendanceController extends Controller
     }
 
 
+
+    public function profile(Request $request, $id)
+    {
+        return view('profile_user', ['id' => $id], ['user' => $request->user()]);
+    }
     
 }
 

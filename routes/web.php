@@ -20,9 +20,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/', [AttendanceController::class, 'index']);
     // Route::get('/kelas/{id}', [AttendanceController::class, 'show']);
     Route::get('/senarai/{id}', [AttendanceController::class, 'senarai']);
@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/senarai_guru', [AttendanceController::class, 'senaraiGuru']);
     Route::get('/laporan_pelajar', [AttendanceController::class, 'laporanPelajar']);
     Route::post('/edit/{id}', [AttendanceController::class, 'tambahKehadiran']);
+    Route::post('/profile/{id}', [AttendanceController::class, 'profile']);
     
 });
 
