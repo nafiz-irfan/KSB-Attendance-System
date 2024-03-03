@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/daftar_guru', [AttendanceController::class, 'daftarGuru']);
     Route::get('/senarai_guru', [AttendanceController::class, 'senaraiGuru']);
     Route::get('/laporan_pelajar', [AttendanceController::class, 'laporanPelajar']);
+    Route::post('/edit/{id}', [AttendanceController::class, 'tambahKehadiran']);
     
 });
 

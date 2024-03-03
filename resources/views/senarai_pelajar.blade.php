@@ -57,7 +57,7 @@
                                         <span class="text-secondary text-xs font-weight-bold">012-934 5617</span>
                                     </td> -->
                                     <td class="align-middle">
-                                        <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                        <a href="/edit/{{$pelajar->id}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                             Edit
                                         </a>
                                     </td>

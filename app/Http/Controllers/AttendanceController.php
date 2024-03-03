@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Attendance;
+use App\Models\Dependent;
 use DB;
 use App\Models\School; 
 use App\Models\Kelas; 
@@ -73,7 +74,14 @@ class AttendanceController extends Controller
 
     public function edit($id, Request $request)
     {
-        return view('detail_pelajar', ['id' => $id], ['user' => $request->user()]);
+        $user = $request->user();
+        $Murid = Dependent::where('id', $id)->first();
+        $Namakelas = Kelas::where('class_id', $Murid->class_id)->first();
+        $Kelas = $Namakelas->class_name;
+        $KehadiranMurid = Attendance::where('dependent_id', $id)->orderBy('date', 'asc')->get();
+        // dd($KehadiranMurid);
+        // return view('detail_pelajar', ['id' => $id], ['user' => $request->user()]);
+        return view('detail_pelajar', ['user' => $user, 'murid' => $Murid, 'Kelas' => $Kelas, 'KehadiranMurid' => $KehadiranMurid]);
     }
 
     public function daftarGuru(Request $request)
@@ -144,6 +152,15 @@ class AttendanceController extends Controller
     
         return redirect('landingpage')->with('msg',$msg);
     }
+
+    public function tambahKehadiran(Request $request, $id) 
+    {
+        // $cuba = request('card_id');
+        // $cuba = $id;
+        dump($id);
+    }
+
+
     
 }
 

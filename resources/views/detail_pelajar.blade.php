@@ -1,5 +1,5 @@
 <title>
-    Profile Pelajar {{$id}}
+    Profile Pelajar {{ $murid->name }}
   </title>
 
   
@@ -10,7 +10,7 @@
         <div class="card my-4">
           <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-              <h6 class="text-white text-capitalize ps-3">John Appipol</h6>
+              <h6 class="text-white text-capitalize ps-3">{{ $murid->name }}</h6>
             </div>
           </div>
           <div class="card-body px-0 pb-2">
@@ -25,37 +25,37 @@
                   </tr>
                 </thead>
                 <tbody>
-                @for($i = 1; $i < 7; $i++)
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1 text-sm">
-                        <div>
-                          <p>1/1/2024</p>
+                    @foreach ($KehadiranMurid as $item)
+                    <tr>
+                      <td>
+                        <div class="d-flex px-2 py-1 text-sm">
+                          <div>
+                            <p>{{ $item->date }}</p>
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                    <td>
-                        <div class="d-flex flex-column justify-content-center d-flex px-2 py-1">
-                            <h6 class="mb-0 text-sm">07:18:23 AM</h6>
-                            <p class="text-xs text-secondary mb-0">OnTime</p>
-                        </div>
-                    </td>
-                    @if ($i % 2 == 0)
-                        <td class="align-middle text-center text-sm">
-                            <span class="badge badge-sm bg-gradient-success">Hadir</span>
-                        </td>
-                    @else
-                        <td class="align-middle text-center text-sm">
-                            <span class="badge badge-sm bg-gradient-danger">Tidak Hadir</span>
-                        </td>
-                    @endif
-                    <td class="align-middle text-center">
-                        <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Edit
-                        </button>
-                    </td>
-                  </tr>
-                @endfor
+                      </td>
+                      <td>
+                          <div class="d-flex flex-column justify-content-center d-flex px-2 py-1">
+                              <h6 class="mb-0 text-sm">07:18:23 AM</h6>
+                              <p class="text-xs text-secondary mb-0">OnTime</p>
+                          </div>
+                      </td>
+                      {{-- @if ($i % 2 == 0) --}}
+                          <td class="align-middle text-center text-sm">
+                              <span class="badge badge-sm bg-gradient-success">Hadir</span>
+                          </td>
+                      {{-- @else
+                          <td class="align-middle text-center text-sm">
+                              <span class="badge badge-sm bg-gradient-danger">Tidak Hadir</span>
+                          </td>
+                      @endif --}}
+                      <td class="align-middle text-center">
+                          <button type="button" class="btn btn-outline-secondary">
+                              butang dummy
+                          </button>
+                      </td>
+                    </tr>
+                    @endforeach  
                 </tbody>
               </table>
             </div>
@@ -66,20 +66,22 @@
         <div class="card z-index-2 ">
           <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
             <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1" style="text-align: center">
-              <img src="../assets/img/team-4.jpg" class="rounded-3" style="width: 150px;" alt="user6">
+              {{-- <img src="../assets/img/team-4.jpg" class="rounded-3" style="width: 150px;" alt="user6"> --}}
+              <img src="{{ $murid->profile_image_path }}" class="rounded-3" style="width: 150px;" alt="user6">
             </div>
           </div>
           <div class="card-body">
-            <h6 class="mb-0 ">John Appipol Paus</h6>
+            <h6 class="mb-0 ">{{ $murid->name }}</h6>
             <hr class="dark horizontal">
-            <p class="text-sm ">Id Pelajar : {{$id}}</p>
-            <p class="text-sm ">Kelas : 1 Kawdu</p>
-            <p class="text-sm ">Kontak Penjaga : +6016-6888299</p>
+            <p class="text-sm ">Id Murid : {{ $murid->id }}</p>
+            <p class="text-sm ">Kelas : {{ $Kelas }}</p>
             <p class="text-sm "> Jumlah Hadir Kelas : 2/2</p>
             <p class="text-sm "> Peratusan Kehadiran : 100%</p>
             <hr class="dark horizontal">
             <div class="d-flex ">
-              <p class="mb-0 text-sm"> Boleh ltak graph for percent dtg n x dtg sk</p>
+              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Tambah Rekod Kehadiran
+              </button>
             </div>
           </div>
         </div>
@@ -92,13 +94,29 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Ubah status kehadiran pelajar?</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Pilih Tarikh untuk tambah rekod kehadiran murid</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              details pelajar yg nk diubah status kehadiran exp nama , kelas, peratusan kehadiran, guru kelas n then highlightkn hari apa nk diubah n status terkini sblum diubah.
+              <form action="" method="post">
+                @csrf
+                <strong>Nama Murid : {{ $murid->name }}</strong> <br>
+                <strong>ID Murid : {{ $murid->id }}</strong>
+                <hr class="dark horizontal">
+                <label for="amendDate">Pilih Tarikh</label>
+                  <input id="card_id" name="card_id" type="text" class="form-control" autofocus>
+                    {{-- <input id="amendDate" class="form-control" type="date" /> --}}
+                    <span id="amendDateSelected"></span>
+
+                <hr class="dark horizontal">
+                <div>
+                  <button type="submit" class="btn btn-success">Tambah Rekod</button>
+                </div>
+
+              </form>
+              {{-- details pelajar yg nk diubah status kehadiran exp nama , kelas, peratusan kehadiran, guru kelas n then highlightkn hari apa nk diubah n status terkini sblum diubah.
               <hr class="dark horizontal">
-              Sila Pilih status dibawah
+              Sila Pilih status dibawah --}}
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tidak Hadir</button>
