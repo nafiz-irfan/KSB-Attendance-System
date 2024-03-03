@@ -8,7 +8,8 @@ use App\Models\Attendance;
 use App\Models\Dependent;
 use DB;
 use App\Models\School; 
-use App\Models\Kelas; 
+use App\Models\Kelas;
+use Illuminate\Support\Facades\Redirect;
 
 class AttendanceController extends Controller
 {
@@ -155,9 +156,27 @@ class AttendanceController extends Controller
 
     public function tambahKehadiran(Request $request, $id) 
     {
-        // $cuba = request('card_id');
+        $tarikh = request('amendDate');
         // $cuba = $id;
-        dump($id);
+
+        $check = Attendance::where('dependent_id', $id)->whereDate('date', $tarikh)->first();
+
+        if (!$check)
+        {
+            //simpan data baru ke dlm attendance table
+            $attendance = new Attendance;
+            $attendance->dependent_id = $id; 
+            $attendance->date = $tarikh;
+            $attendance->save();
+            $msg = "Rekod berjaya disimpan!";
+        }
+        else {
+            $msg = "Rekod Kehadiran telah wujud!";
+        }
+        // return redirect('/')->with('msg',$msg);
+        // return Redirect::route('edit', ['id' => $id]);
+        return redirect('edit/' . $id);
+
     }
 
 

@@ -104,9 +104,10 @@
                 <strong>ID Murid : {{ $murid->id }}</strong>
                 <hr class="dark horizontal">
                 <label for="amendDate">Pilih Tarikh</label>
-                  <input id="card_id" name="card_id" type="text" class="form-control" autofocus>
-                    {{-- <input id="amendDate" class="form-control" type="date" /> --}}
-                    <span id="amendDateSelected"></span>
+                <input type="date" name="amendDate" id="amaendDate"  class="form-control">
+                  {{-- <input id="card_id" name="card_id" type="text" class="form-control" autofocus>
+                    <input id="amendDate" class="form-control" type="date" />
+                    <span id="amendDateSelected"></span> --}}
 
                 <hr class="dark horizontal">
                 <div>
