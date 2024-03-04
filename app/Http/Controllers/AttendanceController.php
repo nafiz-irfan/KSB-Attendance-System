@@ -10,6 +10,7 @@ use DB;
 use App\Models\School; 
 use App\Models\Kelas;
 use Illuminate\Support\Facades\Redirect;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 class AttendanceController extends Controller
 {
@@ -176,15 +177,27 @@ class AttendanceController extends Controller
         // return redirect('/')->with('msg',$msg);
         // return Redirect::route('edit', ['id' => $id]);
         return redirect('edit/' . $id);
-
     }
-
-
 
     public function profile(Request $request, $id)
     {
         return view('profile_user', ['id' => $id], ['user' => $request->user()]);
     }
-    
+
+    public function editProfile($id)
+    {
+        $user = User::find($id);
+        return view('user.edit', compact('user'));
+    }
+
+    public function updateProfile( Request $request, $id)
+    {
+        //TODO update semua input
+        $user = User::find($id);
+        $user->name = $request->input('name');
+
+        $user->save();
+        return view('profile_user', ['id' => $id], ['user' => $request->user()]);
+    }
 }
 
