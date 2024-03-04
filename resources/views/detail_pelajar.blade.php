@@ -21,7 +21,7 @@
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tarikh</th>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Masa Prod In</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status Kehadiran</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hapus Rekod</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -36,6 +36,7 @@
                       </td>
                       <td>
                           <div class="d-flex flex-column justify-content-center d-flex px-2 py-1">
+                            {{-- <h6 class="mb-0 text-sm">{{ $item->aid }}</h6> --}}
                               <h6 class="mb-0 text-sm">07:18:23 AM</h6>
                               <p class="text-xs text-secondary mb-0">OnTime</p>
                           </div>
@@ -50,9 +51,12 @@
                           </td>
                       @endif --}}
                       <td class="align-middle text-center">
-                          <button type="button" class="btn btn-outline-secondary">
-                              butang dummy
-                          </button>
+                        <form action="{{ route('edit.destroy',$item->aid) }}" method="post">
+                          @csrf
+                          @method('delete')
+                          <button type="submit" class="btn btn-danger btn-sm">X</button>
+                        </form>
+                          
                       </td>
                     </tr>
                     @endforeach  
@@ -120,8 +124,8 @@
               Sila Pilih status dibawah --}}
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tidak Hadir</button>
-              <button type="button" class="btn btn-success">Hadir</button>
+              {{-- <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tidak Hadir</button>
+              <button type="button" class="btn btn-success">Hadir</button> --}}
             </div>
           </div>
         </div>

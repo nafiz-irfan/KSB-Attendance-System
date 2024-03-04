@@ -185,6 +185,16 @@ class AttendanceController extends Controller
     {
         return view('profile_user', ['id' => $id], ['user' => $request->user()]);
     }
+
+    public function destroy(Request $request, $id)
+    {
+        $BuangRekod = Attendance::where('aid', $id)->first();
+        $idMurid = $BuangRekod->dependent_id;
+        // dd($BuangRekod);
+        $BuangRekod->delete();
+        
+        return redirect('edit/' . $idMurid)->with('success','Rekod Murid telah dipadam!');
+    }
     
 }
 
