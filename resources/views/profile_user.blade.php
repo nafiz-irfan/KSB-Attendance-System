@@ -78,7 +78,15 @@
 
         if (password !== confirmPassword) {
             alert("Passwords do not match");
-            event.preventDefault(); // Prevent form submission
+            event.preventDefault(); 
+        } else {
+            // Display success notification using SweetAlert2
+            Swal.fire({
+                icon: 'success',
+                title: 'Profile Updated Successfully!',
+                showConfirmButton: false
+            });
+            
         }
     });
 </script>
