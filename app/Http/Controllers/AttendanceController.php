@@ -201,6 +201,7 @@ class AttendanceController extends Controller
 
         $user->update();
         return view('profile_user', ['id' => $id], ['user' => $request->user()])->with('success', 'Profile updated successfully');
+        // return redirect('profile/' . $id);
     }
 
     public function destroy(Request $request, $id)

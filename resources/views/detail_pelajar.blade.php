@@ -51,7 +51,7 @@
                           </td>
                       @endif --}}
                       <td class="align-middle text-center">
-                        <form action="{{ route('edit.destroy',$item->aid) }}" method="post">
+                        <form action="{{ route('edit.destroy',$item->aid) }}" method="post" id="deleteData">
                           @csrf
                           @method('delete')
                           <button type="submit" class="btn btn-danger btn-sm">X</button>
@@ -102,13 +102,13 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form action="" method="post">
+              <form action="/edit/{{ $murid->id }}" method="post" id="tambahData">
                 @csrf
                 <strong>Nama Murid : {{ $murid->name }}</strong> <br>
                 <strong>ID Murid : {{ $murid->id }}</strong>
                 <hr class="dark horizontal">
                 <label for="amendDate">Pilih Tarikh</label>
-                <input type="date" name="amendDate" id="amaendDate"  class="form-control">
+                <input type="date" name="amendDate" id="amendDate"  class="form-control">
                   {{-- <input id="card_id" name="card_id" type="text" class="form-control" autofocus>
                     <input id="amendDate" class="form-control" type="date" />
                     <span id="amendDateSelected"></span> --}}
@@ -133,3 +133,35 @@
 
 
 @include('layout.layout')
+
+<script>
+document.getElementById('deleteData').addEventListener('submit', function(event) {
+        // Prevent form submission
+        event.preventDefault();
+
+        // Display success notification using SweetAlert2
+        Swal.fire({
+            icon: 'success',
+            title: 'Rekod telah dipadam!',
+            showConfirmButton: 'OK'
+        }).then(function() {
+            // Once the notification is closed, submit the form
+            document.getElementById('deleteData').submit();
+        });
+});
+
+document.getElementById('tambahData').addEventListener('submit', function(event) {
+        // Prevent form submission
+        event.preventDefault();
+
+        // Display success notification using SweetAlert2
+        Swal.fire({
+            icon: 'success',
+            title: 'Rekod telah ditambah!',
+            showConfirmButton: 'OK'
+        }).then(function() {
+            // Once the notification is closed, submit the form
+            document.getElementById('tambahData').submit();
+        });
+});
+</script>
