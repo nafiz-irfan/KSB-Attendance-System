@@ -80,13 +80,19 @@
             alert("Passwords do not match");
             event.preventDefault(); 
         } else {
-            // Display success notification using SweetAlert2
-            Swal.fire({
-                icon: 'success',
-                title: 'Profile Updated Successfully!',
-                showConfirmButton: false
-            });
-            
-        }
-    });
+        // Prevent form submission
+        event.preventDefault();
+
+        // Display success notification using SweetAlert2
+        Swal.fire({
+            icon: 'success',
+            title: 'Profile Updated Successfully!',
+            showConfirmButton: 'OK'
+        }).then(function() {
+            // Once the notification is closed, submit the form
+            document.getElementById('registrationForm').submit();
+        });
+    }
+});
+
 </script>
