@@ -195,9 +195,12 @@ class AttendanceController extends Controller
         //TODO update semua input
         $user = User::find($id);
         $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
 
-        $user->save();
-        return view('profile_user', ['id' => $id], ['user' => $request->user()]);
+
+        $user->update();
+        return view('profile_user', ['id' => $id], ['user' => $request->user()])->with('success', 'Profile updated successfully');
     }
 }
 
