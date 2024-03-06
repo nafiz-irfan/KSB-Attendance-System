@@ -18,7 +18,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="{{ route('register') }}">
+                            <form method="POST" id="registerForm" action="{{ route('register') }}">
                                 @csrf
 
                                 <!-- Name -->
@@ -70,7 +70,7 @@
                                 </div>
                                 <x-input-error :messages="$errors->get('school')" class="mt-2" />
 
-                                <x-primary-button class="btn bg-gradient-primary w-100 my-4 mb-2">
+                                <x-primary-button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">
                                     {{ __('Register') }}
                                 </x-primary-button>
 
@@ -94,3 +94,19 @@
         padding-left: 15px; 
     }
 </style>
+
+<script>
+
+    document.getElementById('registerForm').addEventListener('submit', function(event) {
+        // Display success notification using SweetAlert2
+        Swal.fire({
+            icon: 'success',
+            title: 'User Registered Successfully!',
+            showConfirmButton: 'OK'
+        }).then(function() {
+            // Once the notification is closed, submit the form
+            document.getElementById('registerForm').submit();
+        });
+    });
+
+</script>
