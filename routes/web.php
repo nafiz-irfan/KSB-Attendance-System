@@ -29,7 +29,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/edit/{id}', [AttendanceController::class, 'tambahKehadiran']);
 
     Route::post('/profile/{id}', [AttendanceController::class, 'profile']);
-    // Route::delete('/edit/{id}/{aid}', [AttendanceController::class, 'destroy'])->name('edit.destroy');
     Route::delete('/delete/{id}', [AttendanceController::class, 'destroy'])->name('edit.destroy');
     
     Route::get('/profile/{id}', [AttendanceController::class, 'editProfile']);
