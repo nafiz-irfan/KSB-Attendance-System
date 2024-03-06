@@ -18,6 +18,8 @@ class AttendanceController extends Controller
     public function index(Request $request)
     {   
         $user = $request->user();
+        if ($user->role != 'superadmin')
+        {
         $semuakelas = DB::select('SELECT * FROM class_table WHERE school_id = ? AND class_id  IN (SELECT DISTINCT class_id FROM dependent_table)', [$user->school_id]);
         // $semuakelas untuk dptkan kelas yg ada student 
 
@@ -35,6 +37,19 @@ class AttendanceController extends Controller
             'semuakelas' => $semuakelas,
             'school' => $school,
         ]);
+        }else{
+            $schools = DB::select('SELECT * FROM school_table');
+
+            foreach ($schools as $school) {
+            $jumlahPelajar = DB::select("SELECT COUNT(*) as total FROM dependent_table WHERE school = ?", [$school->school_id]);
+            $school->totalPelajar = $jumlahPelajar[0]->total;
+            }
+
+            return view('welcome', [
+                'user' => $request->user(),
+                'school' => $schools,
+            ]);
+        }
     }
     
 

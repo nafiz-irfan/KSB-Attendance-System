@@ -1,11 +1,16 @@
 <title>
+    @if ($user->role != 'superadmin')
     Dashboard {{ $school->school_name }}
+    @else
+    Dashboard
+    @endif
   </title>
 @include('layout.header')
 
     <!-- End Navbar -->
     <div class="container-fluid py-4">
     <div class="row">
+      @if ($user->role != 'superadmin')
        @foreach ($semuakelas as $kelas)
       <div class="col-xl-2 col-sm-2 mb-xl-5 mb-4">
       <a href="/senarai/{{$kelas->class_id}}" class="btn-link">
@@ -25,6 +30,27 @@
         </a>
         </div>
         @endforeach
+        @else
+        @foreach ($school as $school)
+      <div class="col-xl-2 col-sm-2 mb-xl-5 mb-4">
+      <a href="" class="btn-link">
+       <div class="card">
+         <div class="card-header mx-4 p-3 text-center">
+          <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg">
+           <i class="material-icons opacity-10">school</i>
+             </div>
+             </div>
+        <div class="card-body pt-0 p-3 text-center">
+            <h6 class="text-center mb-0"></h6>
+                <span class="text-xs">{{ $school->school_name }}</span>
+                <hr class="horizontal dark my-3">
+                <h5 class="mb-1">{{ $school->totalPelajar }} Pelajar</h5>
+            </div>
+         </div>
+        </a>
+        </div>
+        @endforeach
+        @endif
       <!-- <div class="row mt-4">
         <div class="col-lg-4 col-md-6 mt-4 mb-4">
           <div class="card z-index-2 ">
