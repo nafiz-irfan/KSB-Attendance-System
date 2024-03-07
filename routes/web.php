@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\SuperUser;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +31,9 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/profile/{id}', [AttendanceController::class, 'profile']);
     Route::delete('/delete/{id}', [AttendanceController::class, 'destroy'])->name('edit.destroy');
-    
+
+    Route::get('/senarai_sekolah/{id}', [SuperUser::class, 'showClass']);
+
     Route::get('/profile/{id}', [AttendanceController::class, 'editProfile']);
     Route::put('/profile/{id}', [AttendanceController::class, 'updateProfile']);
 });

@@ -33,7 +33,7 @@
         @else
         @foreach ($school as $school)
       <div class="col-xl-2 col-sm-2 mb-xl-5 mb-4">
-      <a href="" class="btn-link">
+      <a href="/senarai_sekolah/{{$school->school_id}}" class="btn-link">
        <div class="card">
          <div class="card-header mx-4 p-3 text-center">
           <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg">

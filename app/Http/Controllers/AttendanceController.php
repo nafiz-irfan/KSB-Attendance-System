@@ -63,6 +63,8 @@ class AttendanceController extends Controller
     public function senarai($id, Request $request)
     {
         $user = $request->user();
+        if ($user->role != 'superadmin')
+        {
         $listpelajar = DB::select("SELECT * FROM dependent_table WHERE class_id = $id AND school = ?", [$user->school_id]);
     
         $namakelas = Kelas::where('class_id', $id)
@@ -86,6 +88,30 @@ class AttendanceController extends Controller
             'semakkehadiran' => $semakkehadiran,
             'id' => $id, 
         ]);
+        }else{
+            $listpelajar = DB::select("SELECT * FROM dependent_table WHERE class_id = $id ");
+    
+            $namakelas = Kelas::where('class_id', $id)
+                    ->first();
+
+            $date = now()->toDateString(); 
+            $semakkehadiran = [];
+
+            foreach ($listpelajar as $dependent) {
+                $attendance = Attendance::where('dependent_id', $dependent->id)
+                    ->whereDate('date', $date)
+                    ->get();
+                $semakkehadiran[$dependent->id] = $attendance;
+            }
+
+            return view('senarai_pelajar', [
+                'user' => $user,
+                'listpelajar' => $listpelajar,
+                'namakelas' => $namakelas,
+                'semakkehadiran' => $semakkehadiran,
+                'id' => $id, 
+            ]);
+        }
     }
 
 
