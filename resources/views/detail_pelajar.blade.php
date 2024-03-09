@@ -19,7 +19,7 @@
                 <thead>
                   <tr>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tarikh</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Masa Prod In</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Masa Hadir</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status Kehadiran</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hapus Rekod</th>
                   </tr>
