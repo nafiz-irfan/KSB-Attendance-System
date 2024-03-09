@@ -30,15 +30,15 @@
                       <td>
                         <div class="d-flex px-2 py-1 text-sm">
                           <div>
-                            <p>{{ $item->date }}</p>
+                            <p class="mb-0 text-sm">{{ $item->date }}</p>
                           </div>
                         </div>
                       </td>
                       <td>
                           <div class="d-flex flex-column justify-content-center d-flex px-2 py-1">
                             {{-- <h6 class="mb-0 text-sm">{{ $item->aid }}</h6> --}}
-                              <h6 class="mb-0 text-sm">07:18:23 AM</h6>
-                              <p class="text-xs text-secondary mb-0">OnTime</p>
+                            <h6 class="mb-0 text-sm">{{ ($item->created_at)->timezone('Asia/Kuala_Lumpur')->format('h:i:s A') }}</h6>
+                              <!-- <p class="text-xs text-secondary mb-0">OnTime</p> -->
                           </div>
                       </td>
                       {{-- @if ($i % 2 == 0) --}}
@@ -77,10 +77,10 @@
           <div class="card-body">
             <h6 class="mb-0 ">{{ $murid->name }}</h6>
             <hr class="dark horizontal">
-            <p class="text-sm ">Id Murid : {{ $murid->id }}</p>
+            <p class="text-sm ">No Kad : {{ $murid->card_no }}</p>
             <p class="text-sm ">Kelas : {{ $Kelas }}</p>
-            <p class="text-sm "> Jumlah Hadir Kelas : 2/2</p>
-            <p class="text-sm "> Peratusan Kehadiran : 100%</p>
+            <!-- <p class="text-sm "> Jumlah Hadir Kelas : 2/2</p>
+            <p class="text-sm "> Peratusan Kehadiran : 100%</p> -->
             <hr class="dark horizontal">
             <div class="d-flex ">
               <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -105,7 +105,7 @@
               <form action="/edit/{{ $murid->id }}" method="post" id="tambahData">
                 @csrf
                 <strong>Nama Murid : {{ $murid->name }}</strong> <br>
-                <strong>ID Murid : {{ $murid->id }}</strong>
+                <strong>No Kad : {{ $murid->card_no }}</strong>
                 <hr class="dark horizontal">
                 <label for="amendDate">Pilih Tarikh</label>
                 <input type="date" name="amendDate" id="amendDate"  class="form-control" required>
