@@ -136,19 +136,32 @@
 
 <script>
 document.getElementById('deleteData').addEventListener('submit', function(event) {
-        // Prevent form submission
-        event.preventDefault();
+    // Prevent form submission
+    event.preventDefault();
 
-        // Display success notification using SweetAlert2
-        Swal.fire({
-            icon: 'success',
-            title: 'Rekod telah dipadam!',
-            showConfirmButton: 'OK'
-        }).then(function() {
-            // Once the notification is closed, submit the form
-            document.getElementById('deleteData').submit();
-        });
+    Swal.fire({
+        title: 'Anda yakin ingin menghapus rekod ini?',
+        text: "Tindakan ini tidak dapat dibatalkan!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, Hapus!',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Rekod telah dipadam!',
+                showConfirmButton: 'OK'
+            }).then(function() {
+                // Once the notification is closed, submit the form
+                document.getElementById('deleteData').submit();
+            });
+        }
+    });
 });
+
 
 document.getElementById('tambahData').addEventListener('submit', function(event) {
         // Prevent form submission
