@@ -71,7 +71,7 @@ class AttendanceController extends Controller
                 ->where('school_id', $user->school_id)
                 ->first();
 
-        $date = now()->toDateString(); 
+        $date = now()->timezone('Asia/Kuala_Lumpur')->toDateString(); 
         $semakkehadiran = [];
 
         foreach ($listpelajar as $dependent) {
@@ -94,7 +94,7 @@ class AttendanceController extends Controller
             $namakelas = Kelas::where('class_id', $id)
                     ->first();
 
-            $date = now()->toDateString(); 
+            $date = now()->timezone('Asia/Kuala_Lumpur')->toDateString(); 
             $semakkehadiran = [];
 
             foreach ($listpelajar as $dependent) {
