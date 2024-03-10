@@ -51,7 +51,7 @@
                           </td>
                       @endif --}}
                       <td class="align-middle text-center">
-                        <form action="{{ route('edit.destroy',$item->aid) }}" method="post" id="deleteData">
+                        <form action="{{ route('edit.destroy',$item->aid) }}" method="post" id="deleteData" class="destroyData">
                           @csrf
                           @method('delete')
                           <button type="submit" class="btn btn-danger btn-sm">X</button>
@@ -109,10 +109,6 @@
                 <hr class="dark horizontal">
                 <label for="amendDate">Pilih Tarikh</label>
                 <input type="date" name="amendDate" id="amendDate"  class="form-control" required>
-                  {{-- <input id="card_id" name="card_id" type="text" class="form-control" autofocus>
-                    <input id="amendDate" class="form-control" type="date" />
-                    <span id="amendDateSelected"></span> --}}
-
                 <hr class="dark horizontal">
                 <div>
                   <button type="submit" class="btn btn-success">Tambah Rekod</button>
@@ -135,7 +131,7 @@
 @include('layout.layout')
 
 <script>
-document.getElementById('deleteData').addEventListener('submit', function(event) {
+document.getElementsByClassName('destroyData').addEventListener('submit', function(event) {
     // Prevent form submission
     event.preventDefault();
 
@@ -156,7 +152,7 @@ document.getElementById('deleteData').addEventListener('submit', function(event)
                 showConfirmButton: 'OK'
             }).then(function() {
                 // Once the notification is closed, submit the form
-                document.getElementById('deleteData').submit();
+                document.getElementsByClassName('destroyData').submit();
             });
         }
     });

@@ -10,6 +10,7 @@ use DB;
 use App\Models\School; 
 use App\Models\Kelas;
 use Illuminate\Support\Facades\Redirect;
+use PhpParser\Node\Stmt\Return_;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
 class AttendanceController extends Controller
@@ -281,13 +282,16 @@ class AttendanceController extends Controller
         $delGuru->delete();
 
         return redirect('/senarai_guru');
-        
-        // $BuangRekod = Attendance::where('aid', $id)->first();
-        // $idMurid = $BuangRekod->dependent_id;
-        // // dd($BuangRekod);
-        // $BuangRekod->delete();
-        
-        // return redirect('edit/' . $idMurid)->with('success','Rekod Murid telah dipadam!');
+    }
+
+    public function updatePwd(Request $request, $id) {
+        // $pwdBaru = $request->input('password');
+        // dd($pwdBaru);
+        // dd()
+        $user = User::find($id);
+        $user->password = $request->input('password');
+
+        return redirect('/senarai_guru');
     }
 }
 

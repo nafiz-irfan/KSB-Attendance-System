@@ -39,7 +39,7 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 align-middle text-center">Sekolah</th>
                                     @endif
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 align-middle text-center">Kontak Nombor</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Edit</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Ubah Kata Laluan</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hapus Rekod</th>
                                     {{-- <th class="text-secondary opacity-7">Hapus Rekod</th> --}}
                                 </tr>
@@ -84,37 +84,6 @@
                                               
                                         </td>
                                     </tr>
-                                <!-- Modal -->
-                                <div class="modal fade" id="editTeacherModal{{ $guruItem->id }}" tabindex="-1" aria-labelledby="editTeacherModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="editTeacherModalLabel">Edit Teacher</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                    @if(isset($guruItem))
-                                        <form id="editTeacherForm">
-                                            <div class="mb-3">
-                                            <label for="editTeacherName" class="form-label">Name</label>
-                                            <input type="text" class="form-control" id="editTeacherName" value="{{ $guruItem->name }}">
-                                            </div>
-                                            <div class="mb-3">
-                                            <label for="editTeacherEmail" class="form-label">Email</label>
-                                            <input type="email" class="form-control" id="editTeacherEmail" value="{{ $guruItem->email }}">
-                                            </div>
-                                        </form>
-                                        @else
-                                        <p>No teacher data available.</p>
-                                        @endif
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" id="saveChangesButton">Save changes</button>
-                                    </div>
-                                    </div>
-                                </div>
-                                </div>
                                 @endforeach
                             </tbody>
                         </table>
@@ -125,6 +94,39 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="editTeacherModal" tabindex="-1" aria-labelledby="editTeacherModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editTeacherModalLabel">Edit Teacher</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      @if(isset($guruItem))
+          <!-- Form for editing teacher details -->
+          <form id="editTeacherForm">
+            <div class="mb-3">
+              <label for="editTeacherName" class="form-label">Name</label>
+              <input type="text" class="form-control" id="editTeacherName" value="{{ $guruItem->name }}">
+            </div>
+            <div class="mb-3">
+              <label for="editTeacherEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" id="editTeacherEmail" value="{{ $guruItem->email }}">
+            </div>
+            <!-- You can add more fields here for editing -->
+          </form>
+        @else
+          <p>No teacher data available.</p>
+        @endif
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="saveChangesButton">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 @include('layout.layout')
 
