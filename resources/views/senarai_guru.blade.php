@@ -84,7 +84,6 @@
                                               
                                         </td>
                                     </tr>
-<<<<<<< HEAD
                                 <!-- Modal -->
                                 <div class="modal fade" id="editTeacherModal{{ $guruItem->id }}" tabindex="-1" aria-labelledby="editTeacherModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -116,8 +115,6 @@
                                     </div>
                                 </div>
                                 </div>
-=======
->>>>>>> 3af827bf23e3bad499d2aa65cded68b150f09dd2
                                 @endforeach
                             </tbody>
                         </table>
