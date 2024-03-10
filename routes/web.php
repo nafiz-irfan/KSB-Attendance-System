@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/{id}', [AttendanceController::class, 'editProfile']);
     Route::put('/profile/{id}', [AttendanceController::class, 'updateProfile']);
 
-    Route::delete('/delete/{id}', [AttendanceController::class, 'destroyGuru'])->name('edit.destroyGuru');
+    Route::delete('/deleteGuru/{id}', [AttendanceController::class, 'destroyGuru'])->name('edit.destroyGuru');
 });
 
 Route::post('/landingpage', [AttendanceController::class, 'rekodKehadiran']);
