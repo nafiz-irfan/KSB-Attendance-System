@@ -105,7 +105,7 @@
                                             </div>
                                         </form>
                                         @else
-                                        <p>No teacher data available.</p>
+                                        <p>No teacher data available for now.</p>
                                         @endif
                                     </div>
                                     <div class="modal-footer">
