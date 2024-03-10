@@ -39,7 +39,7 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 align-middle text-center">Sekolah</th>
                                     @endif
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 align-middle text-center">Kontak Nombor</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Edit</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Ubah Kata Laluan</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hapus Rekod</th>
                                     {{-- <th class="text-secondary opacity-7">Hapus Rekod</th> --}}
                                 </tr>
@@ -72,7 +72,7 @@
                                         </td>
                                         <td class="align-middle">
                                         <button type="button" class="btn btn-outline-info editButton" data-bs-toggle="modal" data-bs-target="#editTeacherModal" data-teacher-id="{{ $guruItem->id }}">
-                                                Edit
+                                                Ubah
                                             </button>
                                         </td>
                                         <td class="align-middle">
@@ -99,30 +99,44 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="editTeacherModalLabel">Edit Teacher</h5>
+        <h5 class="modal-title" id="editTeacherModalLabel">Tukar Kata Laluan</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
       @if(isset($guruItem))
           <!-- Form for editing teacher details -->
-          <form id="editTeacherForm">
+          <form id="editTeacherForm" method="POST" action="{{ route('updatePassword',$guruItem->id) }}">
+            @csrf
+            @method('POST')
+            <!-- Display Name -->
             <div class="mb-3">
               <label for="editTeacherName" class="form-label">Name</label>
-              <input type="text" class="form-control" id="editTeacherName" value="{{ $guruItem->name }}">
+              <input type="text" class="form-control" id="editTeacherName" value="{{ $guruItem->name }}" readonly="readonly">
             </div>
+            <!-- Display email -->
             <div class="mb-3">
               <label for="editTeacherEmail" class="form-label">Email</label>
-              <input type="email" class="form-control" id="editTeacherEmail" value="{{ $guruItem->email }}">
+              <input type="email" class="form-control" id="editTeacherEmail" value="{{ $guruItem->email }}" readonly="readonly">
             </div>
+            <!-- Password -->
+            <div class="input-group input-group-outline my-3">
+                <label class="form-label" for="password"></label>
+                <input class="form-control" id="password" type="password" name="password" placeholder="Kata Laluan Baharu" required autocomplete="new-password">
+            </div>
+            <!-- Confirm Password -->
+            {{-- <div class="input-group input-group-outline my-3">
+                <label class="form-label" for="password_confirmation"></label>
+                <input class="form-control" id="password_confirmation" type="password" name="password_confirmation" placeholder="Sahkan Kata Laluan Baharu" required autocomplete="new-password">
+            </div> --}}
             <!-- You can add more fields here for editing -->
+            <div class="modal-footer">
+                <button type="submit" class="btn bg-gradient-primary w-100  mb-2">Simpan</button>
+            </div>
+
           </form>
         @else
           <p>No teacher data available.</p>
         @endif
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="saveChangesButton">Save changes</button>
       </div>
     </div>
   </div>

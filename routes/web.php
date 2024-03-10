@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/profile/{id}', [AttendanceController::class, 'updateProfile']);
 
     Route::delete('/deleteGuru/{id}', [AttendanceController::class, 'destroyGuru'])->name('edit.destroyGuru');
+    Route::post('updatepwd/{id}', [AttendanceController::class, 'updatePwd'])->name('updatePassword');
 });
 
 Route::post('/landingpage', [AttendanceController::class, 'rekodKehadiran']);
