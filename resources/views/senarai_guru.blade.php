@@ -72,7 +72,7 @@
                                         </td>
                                         <td class="align-middle">
                                         <button type="button" class="btn btn-outline-info editButton" data-bs-toggle="modal" data-bs-target="#editTeacherModal{{ $guruItem->id }}" data-teacher-id="{{ $guruItem->id }}">
-                                                Edit
+                                                Ubah
                                             </button>
                                         </td>
                                         <td class="align-middle">
