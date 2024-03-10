@@ -93,18 +93,22 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <!-- Form for editing teacher details -->
-        <form id="editTeacherForm">
-          <div class="mb-3">
-            <label for="editTeacherName" class="form-label">Name</label>
-            <input type="text" class="form-control" id="editTeacherName" value="{{ $guruItem->name }}">
-          </div>
-          <div class="mb-3">
-            <label for="editTeacherEmail" class="form-label">Email</label>
-            <input type="email" class="form-control" id="editTeacherEmail" value="{{ $guruItem->email }}">
-          </div>
-          <!-- You can add more fields here for editing -->
-        </form>
+      @if(isset($guruItem))
+          <!-- Form for editing teacher details -->
+          <form id="editTeacherForm">
+            <div class="mb-3">
+              <label for="editTeacherName" class="form-label">Name</label>
+              <input type="text" class="form-control" id="editTeacherName" value="{{ $guruItem->name }}">
+            </div>
+            <div class="mb-3">
+              <label for="editTeacherEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" id="editTeacherEmail" value="{{ $guruItem->email }}">
+            </div>
+            <!-- You can add more fields here for editing -->
+          </form>
+        @else
+          <p>No teacher data available.</p>
+        @endif
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
