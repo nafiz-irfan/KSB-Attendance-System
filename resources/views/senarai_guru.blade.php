@@ -76,7 +76,7 @@
                                             </button>
                                         </td>
                                         <td class="align-middle">
-                                            <form action="{{ route('edit.destroyGuru',$guruItem->id) }}" method="post" id="deleteDataGuru">
+                                            <form action="{{ route('edit.destroyGuru',$guruItem->id) }}" method="post" id="deleteGuru">
                                               @csrf
                                               @method('delete')
                                               <button type="submit" class="btn btn-danger btn-sm">X</button>
@@ -131,6 +131,23 @@
 @include('layout.layout')
 
 <script>
+//sewwt alert
+document.getElementById('deleteGuru').addEventListener('submit', function(event) {
+        // Prevent form submission
+        event.preventDefault();
+
+        // Display success notification using SweetAlert2
+        Swal.fire({
+            icon: 'success',
+            title: 'Rekod telah ditambah!',
+            showConfirmButton: 'OK'
+        }).then(function() {
+            // Once the notification is closed, submit the form
+            document.getElementById('deleteGuru').submit();
+        });
+});
+
+
     // Search functionality
     document.getElementById('searchInput').addEventListener('input', function() {
         const searchValue = this.value.toLowerCase();
@@ -145,4 +162,6 @@
             }
         });
     });
+
+
 </script>

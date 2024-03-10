@@ -275,7 +275,13 @@ class AttendanceController extends Controller
 
     public function destroyGuru(Request $request, $id)
     {
-        dd($id);
+        $user = $request->user();
+        
+        $delGuru = User::where('id', $id)->first();
+        $delGuru->delete();
+
+        return redirect('/senarai_guru');
+        
         // $BuangRekod = Attendance::where('aid', $id)->first();
         // $idMurid = $BuangRekod->dependent_id;
         // // dd($BuangRekod);
