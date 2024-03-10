@@ -136,6 +136,8 @@ class AttendanceController extends Controller
     {
         $user = $request->user();
         // $Gurus = User::all();
+        if ($user->role != 'superadmin')
+        {
         $Gurus = DB::select("SELECT * FROM users WHERE role != 'superadmin' AND school_id = ?", [$user->school_id]);
         // dump($Gurus);
         $school = School::where('school_id', $user->school_id)->first();
@@ -143,7 +145,23 @@ class AttendanceController extends Controller
         'guru' => $Gurus,
         'user' => $user,
         'school' => $school,
-    ]);
+        ]);
+        }else{
+
+        $Gurus = DB::select("SELECT * FROM users WHERE role = 'admin'");
+        $namasekolah = [];
+        foreach ($Gurus as $guru) {
+            $school = School::where('school_id',$guru->school_id)->first();
+            $namasekolah[$guru->id] = $school->school_name;
+        
+        }
+    
+        return view('senarai_guru', [
+        'guru' => $Gurus,
+        'user' => $user,
+        'namasekolah' => $namasekolah,
+        ]);
+        }
     }
 
     public function laporanPelajar(Request $request)
