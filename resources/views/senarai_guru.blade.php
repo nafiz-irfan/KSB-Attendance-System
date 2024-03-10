@@ -20,7 +20,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="card-body px-0 pb-2">
+                  <div class="card-body px-0 pb-2">
                     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                         <div class="input-group input-group-outline mx-3">
                             <label class="form-label">Cari </label>
