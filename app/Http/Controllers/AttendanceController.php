@@ -272,5 +272,16 @@ class AttendanceController extends Controller
         
         return redirect('edit/' . $idMurid)->with('success','Rekod Murid telah dipadam!');
     }
+
+    public function destroyGuru(Request $request, $id)
+    {
+        dd($id);
+        // $BuangRekod = Attendance::where('aid', $id)->first();
+        // $idMurid = $BuangRekod->dependent_id;
+        // // dd($BuangRekod);
+        // $BuangRekod->delete();
+        
+        // return redirect('edit/' . $idMurid)->with('success','Rekod Murid telah dipadam!');
+    }
 }
 

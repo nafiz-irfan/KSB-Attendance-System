@@ -39,7 +39,9 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 align-middle text-center">Sekolah</th>
                                     @endif
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 align-middle text-center">Kontak Nombor</th>
-                                    <th class="text-secondary opacity-7"></th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Edit</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hapus Rekod</th>
+                                    {{-- <th class="text-secondary opacity-7">Hapus Rekod</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -69,9 +71,17 @@
                                             <span class="text-secondary text-xs font-weight-bold">{{ $guruItem->email }}</span>
                                         </td>
                                         <td class="align-middle">
-                                        <button type="button" class="btn btn-outline-danger editButton" data-bs-toggle="modal" data-bs-target="#editTeacherModal" data-teacher-id="{{ $guruItem->id }}">
+                                        <button type="button" class="btn btn-outline-info editButton" data-bs-toggle="modal" data-bs-target="#editTeacherModal" data-teacher-id="{{ $guruItem->id }}">
                                                 Edit
                                             </button>
+                                        </td>
+                                        <td class="align-middle">
+                                            <form action="{{ route('edit.destroyGuru',$guruItem->id) }}" method="post" id="deleteDataGuru">
+                                              @csrf
+                                              @method('delete')
+                                              <button type="submit" class="btn btn-danger btn-sm">X</button>
+                                            </form>
+                                              
                                         </td>
                                     </tr>
                                 @endforeach
