@@ -287,9 +287,12 @@ class AttendanceController extends Controller
     public function updatePwd(Request $request, $id) {
         // $pwdBaru = $request->input('password');
         // dd($pwdBaru);
-        // dd()
+        // dd($pwdBaru);
+
         $user = User::find($id);
+        // dd($user);
         $user->password = $request->input('password');
+        $user->update();
 
         return redirect('/senarai_guru');
     }
