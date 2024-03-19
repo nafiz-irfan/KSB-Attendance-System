@@ -76,7 +76,7 @@
                                             </button>
                                         </td>
                                         <td class="align-middle">
-                                            <form action="{{ route('edit.destroyGuru',$guruItem->id) }}" method="post" id="deleteGuru">
+                                            <form action="{{ route('edit.destroyGuru',$guruItem->id) }}" method="post" id="deleteGuru" class="destroyData">
                                               @csrf
                                               @method('delete')
                                               <button type="submit" class="btn btn-danger btn-sm">X</button>
@@ -131,27 +131,42 @@
     </div>
 </div>
 
+
 @include('layout.layout')
 
 <script>
-//sewwt alert
-   document.getElementById('deleteGuru').addEventListener('submit', function(event) {
-        // Prevent form submission
-        event.preventDefault();
 
-        // Display success notification using SweetAlert2
-        Swal.fire({
-            icon: 'success',
-            title: 'Rekod telah dipadam!',
-            showConfirmButton: true
-        }).then(function(result) {
-            // If the user confirms, submit the form
-            if (result.isConfirmed) {
-                document.getElementById('deleteGuru').submit();
-            }
+document.addEventListener('DOMContentLoaded', function() {
+    // Delete record
+    var destroyForms = document.getElementsByClassName('destroyData');
+    Array.from(destroyForms).forEach(function(form) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            Swal.fire({
+                title: 'Anda yakin ingin menghapus rekod ini?',
+                text: "Tindakan ini tidak dapat dibatalkan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Rekod telah dipadam!',
+                        showConfirmButton: false,
+                        timer: 1500 
+                    }).then(function() {
+                        form.submit();
+                    });
+                }
+            });
         });
     });
-
+});
 
     // Search functionality
     document.getElementById('searchInput').addEventListener('input', function() {

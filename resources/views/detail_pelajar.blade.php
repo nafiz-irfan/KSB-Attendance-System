@@ -130,47 +130,52 @@
 
 @include('layout.layout')
 
+@include('layout.layout')
+
 <script>
-document.getElementsByClassName('destroyData').addEventListener('submit', function(event) {
-    // Prevent form submission
-    event.preventDefault();
+document.addEventListener('DOMContentLoaded', function() {
+    // Delete record
+    var destroyForms = document.getElementsByClassName('destroyData');
+    Array.from(destroyForms).forEach(function(form) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
 
-    Swal.fire({
-        title: 'Anda yakin ingin menghapus rekod ini?',
-        text: "Tindakan ini tidak dapat dibatalkan!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Ya, Hapus!',
-        cancelButtonText: 'Batal'
-    }).then((result) => {
-        if (result.isConfirmed) {
             Swal.fire({
-                icon: 'success',
-                title: 'Rekod telah dipadam!',
-                showConfirmButton: 'OK'
-            }).then(function() {
-                // Once the notification is closed, submit the form
-                document.getElementsByClassName('destroyData').submit();
+                title: 'Anda yakin ingin menghapus rekod ini?',
+                text: "Tindakan ini tidak dapat dibatalkan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Rekod telah dipadam!',
+                        showConfirmButton: false,
+                        timer: 1500 
+                    }).then(function() {
+                        form.submit();
+                    });
+                }
             });
-        }
+        });
     });
-});
 
-
-document.getElementById('tambahData').addEventListener('submit', function(event) {
-        // Prevent form submission
-        event.preventDefault();
-
-        // Display success notification using SweetAlert2
+    // Add record
+    var tambahForm = document.getElementById('tambahData');
+    tambahForm.addEventListener('submit', function(event) {
         Swal.fire({
             icon: 'success',
             title: 'Rekod telah ditambah!',
-            showConfirmButton: 'OK'
+            showConfirmButton: false,
+            timer: 1500 
         }).then(function() {
-            // Once the notification is closed, submit the form
-            document.getElementById('tambahData').submit();
+            
         });
+    });
 });
 </script>
+
