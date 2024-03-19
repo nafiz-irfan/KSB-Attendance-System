@@ -127,9 +127,6 @@
         </div>
     </div>
 
-
-@include('layout.layout')
-
 @include('layout.layout')
 
 <script>
