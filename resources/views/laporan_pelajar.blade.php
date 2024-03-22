@@ -5,7 +5,47 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 @include('layout.header')
+<style>
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
 
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #3e8e41;
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+</style>
 <div class="container-fluid py-4">
     <div class="row">
         <div class="col">
@@ -28,29 +68,19 @@
                             <span id="endDateSelected"></span>
                         </div>
                     </div>
-                    <div class="row justify-content-center">
-                        {{-- <button class="btn btn-secondary" type="button"
-                            id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Dropdown button
-                        </button>
-                        <ul class="dropdown-menu pt-0"
-                            aria-labelledby="dropdownMenuButton1">
-                            <input type="text"
-                            class="form-control border-0 border-bottom 
-                            shadow-none mb-2" placeholder="Search..."
-                                oninput="handleInput()">
-                        </ul> --}}
-                        <div class="input-group input-group-outline mb-3">
-                            <select name="kelas" id="kelas" class="form-select input spaces" required>
-                                <option selected disabled>Pilih Kelas</option>
-                                <option selected disabled>
-                                    <input type="text" class="form-control border-0 border-bottom shadow-none mb-2" placeholder="Search..." oninput="handleInput()">
-                                </option>
-                            </select>
-                        </div>
-                        </div>
+                    <div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+  <div id="myDropdown" class="dropdown-content">
+    <input type="text" placeholder="Search.." id="myInput" >
+    <a href="#about">About</a>
+    <a href="#base">Base</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Contact</a>
+    <a href="#custom">Custom</a>
+    <a href="#support">Support</a>
+    <a href="#tools">Tools</a>
+  </div>
+</div>
                     <hr class="dark horizontal">
                     <div class="row justify-content-center">
                         <div class="col-lg-3 col-sm-6">
@@ -61,20 +91,29 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <p>test 1 2 3</p>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown button
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </div>
-    </div>
 </div>
 
 @include('layout.layout')
 
+
+
+<script>
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Search functionality
+    document.getElementById('myInput').addEventListener('input', function() {
+        const searchValue = this.value.toLowerCase();
+        const rows = document.querySelectorAll('#myDropdown a');
+
+        rows.forEach(row => {
+            const name = row.textContent.toLowerCase();
+            if (name.includes(searchValue)) {
+                row.style.display = 'block';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+</script>
