@@ -167,7 +167,15 @@ class AttendanceController extends Controller
 
     public function laporanPelajar(Request $request)
     {
-        return view('laporan_pelajar', ['user' => $request->user()]);
+        $user = $request->user();
+        $skid = $user->school_id;
+
+        $listkelas = Kelas::where('school_id', $skid)->get();
+        // dd($listkelas);
+        return view('laporan_pelajar', [
+            'user' => $request->user(),
+            'kelas' => $listkelas,
+        ]);
     }
 
     public function landingpage()

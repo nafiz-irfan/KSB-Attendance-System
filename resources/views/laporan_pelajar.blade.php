@@ -72,13 +72,17 @@
   <button onclick="myFunction()" class="dropbtn">Dropdown</button>
   <div id="myDropdown" class="dropdown-content">
     <input type="text" placeholder="Search.." id="myInput" >
-    <a href="#about">About</a>
+    @foreach ($kelas as $kelas)
+    <a href="#">{{ $kelas->class_name }}</a>
+    @endforeach
+
+    {{-- <a href="#about">About</a>
     <a href="#base">Base</a>
     <a href="#blog">Blog</a>
     <a href="#contact">Contact</a>
     <a href="#custom">Custom</a>
     <a href="#support">Support</a>
-    <a href="#tools">Tools</a>
+    <a href="#tools">Tools</a> --}}
   </div>
 </div>
                     <hr class="dark horizontal">
