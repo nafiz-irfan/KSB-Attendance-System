@@ -55,36 +55,38 @@
                       <h6 class="text-white text-capitalize ps-3">Jana Laporan mengikut ketetapan tarikh</h6>
                     </div>
                 </div>
+                <form>
                 <div class="card-body px-0 pb-2">
                     <div class="row justify-content-center">
                         <div class="col-lg-3 col-sm-6">
                             <label for="startDate">Start</label>
-                            <input id="startDate" class="form-control" type="date" />
+                            <input id="startDate" class="form-control" type="date" required />
                             <span id="startDateSelected"></span>
                         </div>
                         <div class="col-lg-3 col-sm-6">
                             <label for="endDate">End</label>
-                            <input id="endDate" class="form-control" type="date" />
+                            <input id="endDate" class="form-control" type="date" required/>
                             <span id="endDateSelected"></span>
                         </div>
                     </div>
                     <div class="dropdown">
-  <button onclick="myFunction()" class="dropbtn">Dropdown</button>
-  <div id="myDropdown" class="dropdown-content">
-    <input type="text" placeholder="Search.." id="myInput" >
-    @foreach ($kelas as $kelas)
-    <a href="#">{{ $kelas->class_name }}</a>
-    @endforeach
+                    <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <input type="text" placeholder="Search.." id="myInput" >
+                        @foreach ($kelas as $kelas)
+                        <a href="#">{{ $kelas->class_name }}</a>
+                        @endforeach
 
-    {{-- <a href="#about">About</a>
-    <a href="#base">Base</a>
-    <a href="#blog">Blog</a>
-    <a href="#contact">Contact</a>
-    <a href="#custom">Custom</a>
-    <a href="#support">Support</a>
-    <a href="#tools">Tools</a> --}}
-  </div>
-</div>
+                        {{-- <a href="#about">About</a>
+                        <a href="#base">Base</a>
+                        <a href="#blog">Blog</a>
+                        <a href="#contact">Contact</a>
+                        <a href="#custom">Custom</a>
+                        <a href="#support">Support</a>
+                        <a href="#tools">Tools</a> --}}
+                    </div>
+                        </div>
+                        </form>
                     <hr class="dark horizontal">
                     <div class="row justify-content-center">
                         <div class="col-lg-3 col-sm-6">
